@@ -46,7 +46,7 @@ namespace Matrimony.Views
 
                 if (auth.Authenticated)
                 {
-                    await Navigation.PushModalAsync(new Profile());
+                     Navigation.PushAsync(new Profile());
                 }
             }
             else

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:local="clr-namespace:Matrimony.Views" NavigationPage.HasNavigationBar="False"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Matrimony.HelpPage">
+    <ContentPage.Content>
+        <SwipeView x:Name="MainSwipeView" BackgroundColor="Transparent">
+            <SwipeView.LeftItems>
+                <SwipeItems>
+                    <SwipeItemView>
+                        <Grid>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="SwipeBackGround_Tapped"/>
+                            </Grid.GestureRecognizers>
+                            <local:SwipeContentView  />
+                        </Grid>
+                    </SwipeItemView>
+                </SwipeItems>
+            </SwipeView.LeftItems>
+            <RelativeLayout BackgroundColor="#69B7FF" x:Name="relativeCompletePage">
+                <StackLayout x:Name="stackNavigationBar" 
+                         Orientation="Horizontal" 
+                         BackgroundColor="#44DB78"
+                         RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1}"
+                         RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=.1}">
+                    <Image Margin="15,0,0,0" Source="menu.png"  HeightRequest="23" WidthRequest="23">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="BackArrow_Tapped"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label VerticalOptions="Center" Text="Help" TextColor="White" FontSize="Title" VerticalTextAlignment="Center"
+                       HorizontalOptions="CenterAndExpand"
+                       Margin="0,10,10,0">
+                    </Label>
+                </StackLayout>
+            </RelativeLayout>
+        </SwipeView>
+    </ContentPage.Content>
+</ContentPage>

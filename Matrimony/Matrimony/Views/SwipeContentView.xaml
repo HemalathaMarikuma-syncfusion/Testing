@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Matrimony.Views.SwipeContentView">
+  <ContentView.Content>
+        <Grid>
+            <Image Aspect="AspectFill" Source="swipeviewbackground.png"/>
+            <Grid  RowSpacing="30" Padding="20" ColumnSpacing="20" HorizontalOptions="Start" VerticalOptions="CenterAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackLayout Grid.Row="0" Grid.Column="0">
+                    <Image Source="home1.png" HeightRequest="50" WidthRequest="50" HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit"/>
+                    <Label Text="Home" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="HomePage_Tapped"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+
+                <StackLayout Grid.Row="0" Grid.Column="1">
+                    <Image Source="matches.png" HeightRequest="50" WidthRequest="50" HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit"/>
+                    <Label Text="Matches" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Matches_Tapped"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+
+
+                <StackLayout Grid.Row="1" Grid.Column="0">
+                    <Image Source="gmail.png" HeightRequest="50" WidthRequest="50" HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit"/>
+                    <Label Text="MailBox" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Mailbox_Tapped"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+
+                <StackLayout Grid.Row="1" Grid.Column="1">
+                    <Image Source="notification.png" HeightRequest="50" WidthRequest="50" HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit"/>
+                    <Label Text="Notification" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Notification_Tapped"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+
+                <StackLayout Grid.Row="2" Grid.Column="0">
+                    <Image Source="help.png" HeightRequest="50" WidthRequest="50" HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit"/>
+                    <Label Text="Help" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Help_Tapped"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+
+
+                <StackLayout Grid.Row="2" Grid.Column="1">
+                    <Image Source="settings.png" HeightRequest="50" WidthRequest="50" HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit"/>
+                    <Label Text="Settings" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Settings_Tapped"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+
+                <StackLayout Grid.Row="3" Grid.Column="0" >
+                    <Image Source="support.png" HeightRequest="50" WidthRequest="50" HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit"/>
+                    <Label Text="Support" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Support_Tapped"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+
+            </Grid>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

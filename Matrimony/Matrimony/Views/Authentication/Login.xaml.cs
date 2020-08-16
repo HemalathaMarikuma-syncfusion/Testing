@@ -32,9 +32,9 @@ namespace Matrimony.Views.Authentication
             await DisplayAlert("", "Kalanjittu veree valla panikkum poodey..", "OK");
         }
 
-        private async void Register_Tapped(object sender, EventArgs e)
+        private  void Register_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new Matrimony.Views.Profile());
+             Navigation.PushAsync(new Matrimony.Views.Profile());
         }
 
         private void Password_Tapped(object sender, EventArgs e)

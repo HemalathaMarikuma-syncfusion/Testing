@@ -2,13 +2,36 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Text;
+using Xamarin.Forms;
 
 namespace Matrimony.ViewModels
 {
-    public class PhotosViewModel
+    public class PhotosViewModel :INotifyPropertyChanged
     {
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+
+        #region SelectedImage
+
+        private ImageSource selectedImage =  ImageSource.FromFile("user_32px.png");
+
+        public ImageSource SelectedImage
+        {
+            get { return selectedImage; }
+            set
+            {
+                selectedImage = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SelectedImage"));
+            }
+        }
+
+        #endregion
         private ObservableCollection<PhotosModel> image;
+
+
         public ObservableCollection<PhotosModel> Images
         {
             get { return image; }

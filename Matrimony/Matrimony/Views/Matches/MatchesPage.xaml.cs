@@ -1,4 +1,5 @@
 ﻿using Matrimony.Models;
+using Matrimony.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,9 +16,21 @@ namespace Matrimony.Views.Matches
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MatchesPage : ContentPage
     {
+
+        private ObservableCollection<SwipesItem> swipesItems;
+
+        public ObservableCollection<SwipesItem> SwipeViewItems
+        {
+            get { return swipesItems; }
+            set { swipesItems = value; }
+        }
+
         public MatchesPage()
         {
+   
+            this.BindingContext = this;
             InitializeComponent();
+
             LoadMatchesList();
         }
         private void LoadMatchesList()
@@ -199,16 +212,6 @@ namespace Matrimony.Views.Matches
             ListViewMatches.ItemsSource = App.Profiles;
         }
 
-        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
-        {
-            await DisplayAlert("Tapped", "", "OK");
-        }
-
-        private async void SwipeGestureRecognizer_Swiped(object sender, SwipedEventArgs e)
-        {
-            await DisplayAlert("Swiped", "", "OK");
-        }
-
         private void ListViewMatches_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             Models.MatchProfile Profile = new Models.MatchProfile();
@@ -236,11 +239,6 @@ namespace Matrimony.Views.Matches
             await DisplayAlert("", "Login tapped", "OK");
         }
 
-        private async void BackArrow_Tapped(object sender, EventArgs e)
-        {
-            //OnIdealCheckup_Stop();
-            await Navigation.PopModalAsync();
-        }
 
         private int _lastItemAppearedIdx = 0;
         private bool IsLastDirectionWasUp = false;
@@ -338,25 +336,79 @@ namespace Matrimony.Views.Matches
 
         #endregion
 
-        private void btnSendInterest_Clicked(object sender, EventArgs e)
-        {
-
-        }
 
         private async void TapSendInterest_Tapped(object sender, EventArgs e)
         {
             await DisplayAlert("", "Interest sent", "OK");
         }
 
-        private void imageUserTap_Tapped(object sender, EventArgs e)
-        {
-
-        }
-
         private async void imageUserGesture_Tapped(object sender, EventArgs e)
         {
+            CloseAnimation();
             var img = sender as Image;
-            await Navigation.PushModalAsync(new Views.Common.ProfilePhotos());
+            await Navigation.PushModalAsync(new Views.Common.ProfilePhotos() { BindingContext = new PhotosViewModel() { SelectedImage = img.Source } });
         }
+        #region SwipeViewGestures
+
+        private bool isOpen = false;
+
+        public bool IsOpen
+        {
+            get { return isOpen; }
+            set
+            {
+                isOpen = value;
+
+                OnPropertyChanged("IsOpen");
+            }
+        }
+
+        private void BackArrow_Tapped(object sender, EventArgs e)
+        {
+            if (!IsOpen)
+            {
+                MainSwipeView.Open(OpenSwipeItem.LeftItems);
+                OpenAnimation();
+                IsOpen = true;
+            }
+            else
+            {
+                CloseAnimation();
+                IsOpen = false;
+            }
+        }
+
+        private async void OpenAnimation()
+        {
+            //  await relativeCompletePage.ScaleYTo(0.9, 150, Easing.SinOut);
+            IsOpen = true;
+            await relativeCompletePage.TranslateTo(350, 0, 280, Easing.SinInOut);
+            await relativeCompletePage.RotateTo(-15, 280, Easing.SinOut);
+        }
+
+        private async void CloseAnimation()
+        {
+            await relativeCompletePage.TranslateTo(0, 0, 280, Easing.SinOut);
+            await relativeCompletePage.RotateTo(0, 280, Easing.SinOut);
+            IsOpen = false;
+            //   await relativeCompletePage.ScaleYTo(1, 150, Easing.SinOut);
+        }
+        private void SwipeBackGround_Tapped(object sender, EventArgs e)
+        {
+            MainSwipeView.Close();
+            CloseAnimation();
+        }
+
+  
+        protected override void OnDisappearing()
+        {
+            if(IsOpen)
+            {
+                CloseAnimation();
+                IsOpen = false;
+            }
+        }
+
+        #endregion
     }
 }

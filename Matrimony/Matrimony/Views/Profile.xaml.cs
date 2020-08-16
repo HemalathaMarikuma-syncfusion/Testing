@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Matrimony.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,29 +18,30 @@ namespace Matrimony.Views
 			InitializeComponent ();            
         }
 
-        private async void BtnLoadMatches_Clicked(object sender, EventArgs e)
+        private  void BtnLoadMatches_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new Matches.MatchesPage());
+             Navigation.PushAsync(new Matches.MatchesPage());
         }
 
-        private async void BtnLoadRegistration_Clicked(object sender, EventArgs e)
+        private  void BtnLoadRegistration_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new Matrimony.Views.Registration.RegistationPage());
+             Navigation.PushAsync(new Matrimony.Views.Registration.RegistationPage());
         }
 
-        private async void BtnLoadEditProfile_Clicked(object sender, EventArgs e)
+        private  void BtnLoadEditProfile_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new Matrimony.Views.Registration.UpdateProfileDetailsPage());
+             Navigation.PushAsync(new Matrimony.Views.Registration.UpdateProfileDetailsPage());
         }
 
-        private async void BtnLoadMailes_Clicked(object sender, EventArgs e)
+        private  void BtnLoadMailes_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new Matrimony.Views.MailBox.MailBoxPage());
+             Navigation.PushAsync(new Matrimony.Views.MailBox.MailBoxPage());
         }
 
-        private async void BtnProfilePhotos_Clicked(object sender, EventArgs e)
+        private  void BtnProfilePhotos_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new Matrimony.Views.Common.ProfilePhotos());
+            //If no more photo selected in that case, it shows its default image
+             Navigation.PushAsync(new Matrimony.Views.Common.ProfilePhotos() { BindingContext = new PhotosViewModel() });
         }
     }
 }

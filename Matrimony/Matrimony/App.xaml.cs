@@ -8,6 +8,7 @@ using Matrimony.ViewModels;
 using System.IO;
 using System.Collections.ObjectModel;
 using Matrimony.Models.Constant;
+using Matrimony.Views.Authentication;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace Matrimony
@@ -26,8 +27,10 @@ namespace Matrimony
         {
             InitializeComponent();
 
+            //To render the SwipeView in your application
 
-            MainPage = new Views.Authentication.Login();// Profile(); MainPage(); Matches(); ProfileDetails();
+            Device.SetFlags(new[] { "SwipeView_Experimental" });
+            MainPage = new NavigationPage(new Login());// Profile(); MainPage(); Matches(); ProfileDetails();
             //FPAuthentication(); RegistationPage(); UpdateProfileDetailsPage();
         }
 

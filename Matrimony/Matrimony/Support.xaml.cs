@@ -1,5 +1,4 @@
-﻿using Matrimony.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,64 +7,14 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Matrimony.Views.MailBox
+namespace Matrimony
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MailBoxPage : ContentPage
+    public partial class Support : ContentPage
     {
-        public MailBoxPage()
+        public Support()
         {
             InitializeComponent();
-        }
-
-  
-
-        private void ListViewMail_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-
-        }
-
-        private void ListViewMail_ItemDisappearing(object sender, ItemVisibilityEventArgs e)
-        {
-
-        }
-
-        private void TapAccept_Tapped(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TapReject_Tapped(object sender, EventArgs e)
-        {
-
-        }
-
-        private void SentGesture_Tapped(object sender, EventArgs e)
-        {
-            ManageSentReceivedSwitch(true);
-        }
-
-        private void ReceivedGesture_Tapped(object sender, EventArgs e)
-        {
-            ManageSentReceivedSwitch(false);
-        }
-
-        private void ManageSentReceivedSwitch(bool IsSent)
-        { 
-            if(IsSent)
-            {
-                frameReceived.BackgroundColor = Color.White;
-                frameSent.BackgroundColor = Color.Green;
-                lblReceived.TextColor = Color.Black;
-                lblSent.TextColor = Color.White;
-            }
-            else
-            {
-                frameReceived.BackgroundColor = Color.Green;
-                frameSent.BackgroundColor = Color.White;
-                lblReceived.TextColor = Color.White;
-                lblSent.TextColor = Color.Black;
-            }
         }
 
         #region SwipeViewGestures
@@ -113,7 +62,12 @@ namespace Matrimony.Views.MailBox
             IsOpen = false;
             //   await relativeCompletePage.ScaleYTo(1, 150, Easing.SinOut);
         }
-     
+        private void SwipeBackGround_Tapped(object sender, EventArgs e)
+        {
+            MainSwipeView.Close();
+            CloseAnimation();
+        }
+
 
         protected override void OnDisappearing()
         {
@@ -125,11 +79,5 @@ namespace Matrimony.Views.MailBox
         }
 
         #endregion
-
-        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
-        {
-            MainSwipeView.Close();
-            CloseAnimation();
-        }
     }
 }

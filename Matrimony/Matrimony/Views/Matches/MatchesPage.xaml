@@ -2,19 +2,34 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:local="clr-namespace:Matrimony.Views"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" BackgroundColor="LightGray"
+             mc:Ignorable="d" BackgroundColor="LightGray" NavigationPage.HasNavigationBar="False"
              x:Class="Matrimony.Views.Matches.MatchesPage">
+    
     <ContentPage.Content>
 
-        <RelativeLayout x:Name="relativeCompletePage">
+        <SwipeView x:Name="MainSwipeView" BackgroundColor="Transparent">
+            <SwipeView.LeftItems>
+                <SwipeItems>
+                    <SwipeItemView>
+                        <Grid>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="SwipeBackGround_Tapped"/>
+                            </Grid.GestureRecognizers>
+                            <local:SwipeContentView  />
+                        </Grid>
+                    </SwipeItemView>
+                </SwipeItems>
+            </SwipeView.LeftItems>
+            <RelativeLayout x:Name="relativeCompletePage">
 
             <StackLayout x:Name="stackNavigationBar" 
                          Orientation="Horizontal" 
                          BackgroundColor="#44DB78"
                          RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1}"
                          RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=.1}">
-                <Image Margin="15,0,0,0" Source="back_32px.png"  HeightRequest="23" WidthRequest="23">
+                <Image Margin="15,0,0,0" Source="menu.png"  HeightRequest="23" WidthRequest="23">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="BackArrow_Tapped"/>
                     </Image.GestureRecognizers>
@@ -109,32 +124,28 @@
                                                         Type=RelativeToParent,
                                                         Property=Width,
                                                         Factor=1}">
+                  
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
 
                             <Frame Margin="5,2,5,2" BorderColor="White" CornerRadius="14" HasShadow="False">
-                                <Grid>
+                                    <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
-
-
                                     <StackLayout>
-
                                         <StackLayout BackgroundColor="White" Orientation="Horizontal" 
                                                      Padding="5,10,5,0" Grid.Row="0">
-                                            <Frame CornerRadius="12" 
-                                                   BackgroundColor="LightGray" 
-                                                   Padding="-1"
-                                                   WidthRequest="110">
-                                                <StackLayout>
+                                           
+                                                    <StackLayout  Padding="-1" BackgroundColor="LightGray"  WidthRequest="110" >
                                                     
                                                     <Image 
                                                            Source="{Binding ImageUrl}"  
+                                                        HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
                                                            x:Name="{Binding ProfileID}" 
-                                                           Aspect="AspectFill">
+                                                           Aspect="AspectFit">
                                                         <Image.GestureRecognizers>
                                                             <TapGestureRecognizer Tapped="imageUserGesture_Tapped"/>
                                                         </Image.GestureRecognizers>
@@ -148,7 +159,7 @@
                                                     <!--IsVisible="{Binding Source={x:Reference ProfileID}, Path=IsLoading}"
                                                            />-->
                                                 </StackLayout>
-                                            </Frame>
+                                          
 
                                             <StackLayout Orientation="Vertical" 
                                                  VerticalOptions="StartAndExpand" 
@@ -247,7 +258,6 @@
                                         </StackLayout>
 
                                     </StackLayout>
-
                                 </Grid>
                             </Frame>
 
@@ -263,7 +273,7 @@
             </ListView>
 
         </RelativeLayout>
-
+        </SwipeView>
 
     </ContentPage.Content>
 </ContentPage>
