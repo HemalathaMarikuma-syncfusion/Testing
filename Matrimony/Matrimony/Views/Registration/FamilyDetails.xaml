@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Matrimony.Views.Registration.FamilyDetails"
+             BackgroundColor="White">
+
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid BackgroundColor="Transparent" Padding="20" RowSpacing="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" Padding="2">
+                    <Label Text="FAMILY DETAILS"  HorizontalOptions="StartAndExpand" Padding="10,20,20,20"  
+                           VerticalOptions="StartAndExpand" FontSize="20"/>
+                </Grid>
+
+                <Frame Padding="2" BorderColor="Transparent" Grid.Row="1" x:Name="frameFamilyValue">
+                    <StackLayout Spacing="0">
+                        <Label Text="Family Value"/>
+                        <Picker x:Name="pickFamilyValue">
+                            <Picker.Items>
+                                <x:String>Orthodex</x:String>
+                                <x:String>Traditional</x:String>
+                                <x:String>Moderate</x:String>
+                                <x:String>Liberal</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </StackLayout>
+                </Frame>
+
+                <Frame Padding="2" BorderColor="Transparent" Grid.Row="2" x:Name="frameFamilyType">
+                    <StackLayout Spacing="0">
+                        <Label Text="Family Type"/>
+                        <Picker x:Name="pickFamilyType">
+                            <Picker.Items>
+                                <x:String>Joint</x:String>
+                                <x:String>Nuclear</x:String>
+                                <x:String>Others</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </StackLayout>
+                </Frame>
+
+                <Frame Padding="2" BorderColor="Transparent" Grid.Row="3" x:Name="frameFamilyStatus">
+                    <StackLayout Spacing="0">
+                        <Label Text="Family Status"/>
+                        <Picker x:Name="pickFamilyStatus">
+                            <Picker.Items>
+                                <x:String>Middle Class</x:String>
+                                <x:String>Upper Middle Class</x:String>
+                                <x:String>High Class</x:String>
+                                <x:String>Rich</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </StackLayout>
+                </Frame>
+
+                <Frame Padding="2" BorderColor="Transparent" Grid.Row="4" x:Name="frameFathersOccupation">
+                    <StackLayout Spacing="0">
+                        <Label Text="Father's Occupation"/>
+                        <Picker x:Name="pickFathersOccupation">
+                            <Picker.Items>
+                                <x:String>Employeed</x:String>
+                                <x:String>Businessman</x:String>
+                                <x:String>Professional</x:String>
+                                <x:String>Retired</x:String>
+                                <x:String>Not-Employed</x:String>
+                                <x:String>Passed Away</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </StackLayout>
+                </Frame>
+
+                <Frame Padding="2" BorderColor="Transparent" Grid.Row="5" x:Name="frameMothersOccupation">
+                    <StackLayout Spacing="0">
+                        <Label Text="Mother's Occupation"/>
+                        <Picker x:Name="pickMothersOccupation">
+                            <Picker.Items>
+                                <x:String>Employeed</x:String>
+                                <x:String>Businessman</x:String>
+                                <x:String>Professional</x:String>
+                                <x:String>Retired</x:String>
+                                <x:String>Not-Employed</x:String>
+                                <x:String>Passed Away</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </StackLayout>
+                </Frame>
+
+                <Frame Padding="2" BorderColor="Transparent" Grid.Row="6" x:Name="frameNoOfBrothers">
+                    <StackLayout Spacing="0">
+                        <Label Text="No of Brothers"/>
+                        <Picker x:Name="pickNoOfBrothers">
+                            <Picker.Items>
+                                <x:String>1</x:String>
+                                <x:String>2</x:String>
+                                <x:String>3</x:String>
+                                <x:String>4</x:String>
+                                <x:String>5</x:String>
+                                <x:String>5+</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </StackLayout>
+                </Frame>
+
+                <Frame Padding="2" BorderColor="Transparent" Grid.Row="7" x:Name="frameNoOfSisters">
+                    <StackLayout Spacing="0">
+                        <Label Text="No of Sisters"/>
+                        <Picker x:Name="pickNoOfSisters">
+                            <Picker.Items>
+                                <x:String>1</x:String>
+                                <x:String>2</x:String>
+                                <x:String>3</x:String>
+                                <x:String>4</x:String>
+                                <x:String>5</x:String>
+                                <x:String>5+</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </StackLayout>
+                </Frame>
+
+                <Frame Padding="2" BorderColor="Transparent" Grid.Row="8" x:Name="frameAncestralOrigin">
+                    <StackLayout Spacing="0">
+                        <Label Text="Ancestral Origin"/>
+                        <Entry x:Name="entryAncestralOrigin" Margin="0,-10,0,10"/>
+                    </StackLayout>
+                </Frame>
+
+                <Grid Padding="0,10,0,10" Grid.Row="9" x:Name="gridFamilyDetails">
+                    <Button x:Name="btnFamilyDetails" HorizontalOptions="Center" VerticalOptions="Center" 
+                                WidthRequest="200" HeightRequest="40" CornerRadius="25" Text="Save"
+                                BackgroundColor="Orange" TextColor="White" FontSize="Small"
+                            Clicked="BtnFamilyDetails_Clicked"/>
+                </Grid>
+                
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:IC="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             x:Class="Matrimony.Views.ProfileDetails">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button">
+                <Setter Property="CornerRadius" Value="18" />
+                <Setter Property="FontSize" Value="Micro" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="HeightRequest" Value="40" />
+                <Setter Property="BorderWidth" Value="1" />
+                <Setter Property="BorderColor" Value="Black" />
+                <Setter Property="BorderWidth" Value="1" />
+            </Style>
+
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="FontFamily" Value="Calibri" />
+                <!--<Setter Property="FontFamily" Value="Times New Roman" />--> 
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+            <!--BackgroundColor="LightSlateGray"-->
+            <!--<AbsoluteLayout HeightRequest="500" Margin="3,3,3,3">
+                <ActivityIndicator IsRunning="{Binding Source={x:Reference CarouselViewImages}, Path= }"
+                                                   Color="White"
+                                                   AbsoluteLayout.LayoutBounds="0.5,0.5,100,100"
+                                                   AbsoluteLayout.LayoutFlags="PositionProportional"/>-->
+            <!--TOP GREEN VIEW CREATED-->
+            <StackLayout>
+                <StackLayout Margin="0,0,0,0" 
+                             BackgroundColor="#16D679"
+                             Padding="0,10,0,0">
+                    <IC:CircleImage WidthRequest="200" 
+                                    HeightRequest="200" 
+                                    Aspect="AspectFill"
+                                    Source="KeralaBackwaterImage.png" 
+                                    VerticalOptions="CenterAndExpand"  
+                                    HorizontalOptions="CenterAndExpand"/>
+                    <Label Text="Rakesh Ravi G" 
+                           HorizontalOptions="Center" 
+                           TextColor="White" FontSize="18"/>
+                </StackLayout>
+                <BoxView Margin="0,-6,0,0" 
+                         CornerRadius="0,0,16,16" 
+                         WidthRequest="100" HeightRequest="30" 
+                         BackgroundColor="#16D679">
+                </BoxView>
+            </StackLayout>
+
+            <!--Basic Details-->
+            <Label x:Name="LblName" Margin="10,15,0,7" FontAttributes="Bold" FontSize="Large"/>
+            <StackLayout Orientation="Horizontal" Margin="10,0,0,10">
+                <Label x:Name="LblMatrimonyID" FontAttributes="Bold" AutomationId="PD_LblMatrimonyID"/>
+                <Label x:Name="LblAge" AutomationId="PD_LblAge"/>
+                <Label x:Name="LblHeight" AutomationId="PD_LblHeight"/>
+                <Label x:Name="LblLocation" AutomationId="PD_LblLocation"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Margin="0,10,0,10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <!--<Button x:Name="BtnShortList" CornerRadius="18" ImageSource="Shortlist_16px.png" FontSize="Micro" Text="Short List" 
+                        Clicked="BtnShortList_Clicked" HeightRequest="40" BorderWidth="1" BorderColor="Black" BackgroundColor="Transparent" AutomationId="PD_BtnShortList"/>-->
+                <Button x:Name="BtnShortList" ImageSource="Shortlist_16px.png" Text="Short List" 
+                        Clicked="BtnShortList_Clicked" AutomationId="PD_BtnShortList"/>
+                <Button x:Name="BtnCall" ImageSource="phone_16px.png" Text="Call" 
+                        Clicked="BtnCall_Clicked" AutomationId="PD_BtnCall"/>
+                <Button x:Name="BtnChat" ImageSource="Chat_16px.png" Text="Chat" 
+                        Clicked="BtnChat_Clicked" AutomationId="PD_BtnChat"/>
+            </StackLayout>
+
+            <StackLayout>
+                <Label x:Name="LblAboutGender" Margin="10,15,0,15" FontAttributes="Bold" FontSize="Medium" 
+                       AutomationId="PD_LblAboutGender"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Margin="5,0,7,7">
+                <Image  Source="AboutYourSelf.png" HorizontalOptions="Start" VerticalOptions="Start"/>
+                <Label x:Name="LblAboutYou" AutomationId="PD_LblAboutYou"/>
+            </StackLayout>
+            
+            <StackLayout Orientation="Horizontal" Margin="5,2,7,7">
+                <Image  Source="user.png" HorizontalOptions="Start"/>
+                <Label x:Name="LblYear" AutomationId="PD_LblYear" />
+                <Label x:Name="LblMonth" AutomationId="PD_LblMonth"/>
+                <Label x:Name="LblHeight1" AutomationId="PD_LblHeight1"/>
+            </StackLayout>
+            
+            <StackLayout Orientation="Horizontal" Margin="5,0,7,7">
+                <Image Source="user.png" HorizontalOptions="Start"/>
+                <Label x:Name="LblWeight" AutomationId="PD_LblWeight"/>
+                <Label x:Name="LblBodyType" AutomationId="PD_LblBodyType"/>
+                <Label x:Name="LblComplexion" AutomationId="PD_LblComplexion"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Margin="5,0,7,7">
+                <Image Source="materialStatus.png" HorizontalOptions="Start"/>
+                <Label x:Name="LblMaterialStatus" AutomationId="PD_LblMaterialStatus"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Margin="5,0,7,7">
+                <Image  Source="user.png" HorizontalOptions="Start" VerticalOptions="Start"/>
+                <Label x:Name="LblMotherTongue" AutomationId="PD_LblAboutYou"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Margin="5,0,7,7">
+                <Image Source="location.png" HorizontalOptions="Start"/>
+                <Label x:Name="LblPlace" AutomationId="PD_LblPlace"/>
+                <Label x:Name="LblState" AutomationId="PD_LblState"/>
+                <Label x:Name="LblCountry" AutomationId="PD_LblCountry"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Margin="5,0,7,7">
+                <Image  Source="citizen.png" HorizontalOptions="Start" VerticalOptions="Start"/>
+                <Label x:Name="LblCitizenship" AutomationId="PD_LblCitizenship"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Margin="5,0,7,7">
+                <Image  Source="foodtype.png" HorizontalOptions="Start" VerticalOptions="Start"/>
+                <Label x:Name="LblEatingHabits" AutomationId="PD_LblEatingHabits"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Margin="5,0,7,7">
+                <Image  Source="smokinghabits.png" HorizontalOptions="Start" VerticalOptions="Start"/>
+                <Label x:Name="LblSmokingHabits" AutomationId="PD_LblSmokingHabits"/>
+            </StackLayout>
+            
+            <StackLayout Orientation="Horizontal" Margin="5,0,7,7">
+                <Image  Source="drinkinghabits.png" HorizontalOptions="Start" VerticalOptions="Start"/>
+                <Label x:Name="LblDrinkingHabits" AutomationId="PD_LblDrinkingHabits"/>
+            </StackLayout> 
+
+            <StackLayout Orientation="Horizontal" Margin="5,0,7,7">
+                <Image  Source="drughabits.png" HorizontalOptions="Start" VerticalOptions="Start"/>
+                <Label x:Name="LblDrugsHabits" AutomationId="PD_LblDrugsHabits"/>
+            </StackLayout>
+
+            <!--Relegious-->
+            <StackLayout>
+                <Label x:Name="LblAboutRelegious" Margin="10,15,0,15" FontAttributes="Bold" 
+                       FontSize="Medium" AutomationId="PD_LblAboutRelegious"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Margin="5,0,7,7">
+                <Image  Source="pray_16px.png" HorizontalOptions="Start" VerticalOptions="Start"/>
+                <Label x:Name="LblRelegion" AutomationId="PD_LblRelegion"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Margin="5,0,7,7">
+                <Image Source="caste_16px.png" HorizontalOptions="Start"/>
+                <Label x:Name="LblCaste" AutomationId="PD_LblCaste"/>
+                <Label x:Name="LblSubCaste" AutomationId="PD_LblSubCaste"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Margin="5,0,7,7">
+                <Image  Source="gothram_16px.png" HorizontalOptions="Start" VerticalOptions="Start"/>
+                <Label x:Name="LblGothram" AutomationId="PD_LblGothram"/>
+            </StackLayout>
+            
+            <StackLayout Orientation="Horizontal" Margin="5,0,7,7">
+                <Image  Source="star_16px.png" HorizontalOptions="Start" VerticalOptions="Start"/>
+                <Label x:Name="LbLStar" AutomationId="PD_LbLStar"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Margin="5,0,7,7">
+                <Image  Source="star_16px.png" HorizontalOptions="Start" VerticalOptions="Start"/>
+                <Label x:Name="LblDosham" AutomationId="PD_LblDosham"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Margin="5,0,7,7">
+                <Image  Source="star_16px.png" HorizontalOptions="Start" VerticalOptions="Start"/>
+                <Label x:Name="LblHoroscopeMatches" AutomationId="PD_LblHoroscopeMatches"/>
+            </StackLayout>
+
+        </StackLayout>
+        
+    </ScrollView>
+    
+</ContentPage>

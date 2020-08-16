@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Matrimony.Views.Registration.ReligiousInformation" Title="Religious Information">
+
+    <ContentPage.Content>
+        <Grid>
+            <ScrollView>
+                <Grid RowSpacing="20" Padding="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Text="RELIOGIOUS INFORMATION" Padding="2" Grid.Row="0"  HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" FontSize="20"/>
+
+                    <Frame Padding="2" BorderColor="Transparent" Grid.Row="1">
+                        <StackLayout Spacing="0">
+                            <Label Text="Religion"/>
+                            <Picker>
+                                <Picker.Items>
+                                    <x:String>Hindhu</x:String>
+                                    <x:String>Muslim</x:String>
+                                    <x:String>Christian</x:String>
+                                    <x:String>Sikh</x:String>
+                                    <x:String>Jain</x:String>
+                                    <x:String>Jain-others</x:String>
+                                    <x:String>Parse</x:String>
+                                    <x:String>Buddist</x:String>
+                                    <x:String>Jewish</x:String>
+                                    <x:String>Inter-Religion</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame Padding="2" BorderColor="Transparent" Grid.Row="2">
+                        <StackLayout Spacing="0">
+                            <Label Text="Caste"/>
+                            <Picker>
+                                <Picker.Items>
+                                    <x:String>Vaniyar_chettiyar</x:String>
+                                    <x:String>Aaru Nattu Vella</x:String>
+                                    <x:String>Achirapakam Chettiyar</x:String>
+                                    <x:String>Ad dharmi</x:String>
+                                    <x:String>Adi Dravidar</x:String>
+                                    <x:String>Adi Karnataka</x:String>
+                                    <x:String>Agarwal</x:String>
+                                    <x:String>Agri</x:String>
+                                    <x:String>Aheriya</x:String>
+                                    <x:String>Ahom</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame Padding="2" BorderColor="Transparent" Grid.Row="3">
+                        <StackLayout Spacing="0">
+                            <Label Text="Enter your sub caste"/>
+                            <Entry x:Name="Subcaste" />
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame BorderColor="Transparent" Padding="2" Grid.Row="4">
+                        <StackLayout Spacing="0">
+                            <Label Text="Enter Gothra"/>
+                            <Entry x:Name="Gotra"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <StackLayout  Grid.Row="5" Padding="5" Orientation="Horizontal">
+                        <Label VerticalOptions="CenterAndExpand" HorizontalOptions="Start" 
+                               Text="Willing to marry from other communities?"/>
+                        <Switch HorizontalOptions="EndAndExpand" VerticalOptions="Center" IsToggled="False"/>
+                    </StackLayout>
+
+
+                    <Frame Padding="2" BorderColor="Transparent" Grid.Row="6">
+                        <StackLayout Spacing="0">
+                            <Label Text="Star"/>
+                            <Picker x:Name="StarPicker">
+                                <Picker.Items>
+                                    <x:String>Anuradha</x:String>
+                                    <x:String>Arda</x:String>
+                                    <x:String>Ashwini</x:String>
+                                    <x:String>Bharani</x:String>
+                                    <x:String>Chitra</x:String>
+                                    <x:String>Moolam</x:String>
+                                    <x:String>Rhoni</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame Padding="2" BorderColor="Transparent" Grid.Row="7">
+                        <StackLayout Spacing="0">
+                            <Label Text="Raasi/Moon Sign"/>
+                            <Picker x:Name="RasiPicker">
+                                <Picker.Items>
+                                    <x:String>Mesham</x:String>
+                                    <x:String>Rishabam</x:String>
+                                    <x:String>Utram</x:String>
+                                </Picker.Items>
+                                <Picker.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="RasiPicker_Tapped"/>
+                                </Picker.GestureRecognizers>
+                            </Picker>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame Padding="2" BorderColor="Transparent" Grid.Row="8">
+                        <StackLayout Spacing="0">
+                            <Label Text="Zodiac/Star Sign"/>
+                            <Picker>
+                                <Picker.Items>
+                                    <x:String>Aries</x:String>
+                                    <x:String>Taurus</x:String>
+                                    <x:String>Gemini</x:String>
+                                    <x:String>Cancer</x:String>
+                                    <x:String>Leo</x:String>
+                                    <x:String>Virgo</x:String>
+                                    <x:String>Libra</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame Padding="2" BorderColor="Transparent" Grid.Row="9">
+                        <StackLayout Spacing="0">
+                            <Label Text="Having Dhosam"/>
+                            <Picker>
+                                <Picker.Items>
+                                    <x:String>Yes</x:String>
+                                    <x:String>No</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </StackLayout>
+                    </Frame>
+
+
+                    <Grid Padding="15" Grid.Row="10">
+                        <Button x:Name="btnSaveReligious" Text="SAVE"  WidthRequest="200" 
+                                BackgroundColor="Orange" CornerRadius="30" TextColor="White" 
+                                HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                    </Grid>
+                </Grid>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

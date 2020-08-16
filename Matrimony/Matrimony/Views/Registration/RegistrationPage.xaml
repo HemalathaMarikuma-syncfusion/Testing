@@ -1,0 +1,564 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:Matrimony.Models.Validations"
+             xmlns:CusEntry="clr-namespace:Matrimony.Customization"
+             mc:Ignorable="d" NavigationPage.HasNavigationBar="False"
+             x:Class="Matrimony.Views.Registration.RegistationPage"
+             BackgroundColor="White">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style TargetType="Frame">
+                <Setter Property="HeightRequest" Value="35"/>
+            </Style>
+            
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid BackgroundColor="White">
+
+            <ScrollView x:Name="mainGrid" VerticalScrollBarVisibility="Never">
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid x:Name="Photo" RowSpacing="0" Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="70"/>
+                        </Grid.RowDefinitions>
+
+                        <StackLayout Orientation="Horizontal" x:Name="stackLogin">
+                            <Image x:Name="imageLogoReg" HeightRequest="50" Margin="20,0,0,0" 
+                                   WidthRequest="100"  BackgroundColor="White" />
+                            <Label VerticalOptions="Center" 
+                                   HorizontalOptions="EndAndExpand" 
+                                   Margin="0,10,10,0">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Alreay a member?  " TextColor="Orange" FontSize="Subtitle"/>
+                                        <Span Text="Login" TextColor="Orange" FontSize="Subtitle"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Login_Tapped"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+
+                        <Grid Grid.Row="1">
+                            <StackLayout Orientation="Vertical" Padding="0" x:Name="stackTitle">
+                                <Grid>
+                                    <Label Padding="16" Margin="10,0,10,0">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="WISH YOU A HAPPY MARRIAGE LIFE " TextColor="Gray" 
+                                                      FontSize="Medium"/>
+                                                <Span Text="You Could be the next person" TextColor="Black" 
+                                                      FontAttributes="Bold" FontSize="Small"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Image BackgroundColor="#009933" HeightRequest="50" Opacity=".3"
+                                           HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                </Grid>
+                            </StackLayout>
+                        </Grid>
+                        <Grid Grid.Row="2">
+                            <Label Text="FIND THE PERFECT MATCH- REGISTER FREE!" TextColor="Gray" 
+                                   HorizontalOptions="CenterAndExpand" 
+                                   VerticalOptions="CenterAndExpand" FontSize="15"
+                                   FontFamily="Calibri"/>
+                        </Grid>
+                    </Grid>
+
+                    <Grid Grid.Row="1" Padding="0,0" >
+                        <StackLayout Padding="20,0">
+                            <!--Name-->
+                            <Label Text="Name" Margin="15,0,0,0" FontSize="Small" TextColor="Gray"/>
+                            <Frame x:Name="frameName">
+                                <Frame.Content>
+                                    <CusEntry:CustomEntry x:Name="entryName" Placeholder="Enter name"/>
+                                </Frame.Content>
+                            </Frame>
+
+                            <!--Gender-->
+                            <Label Text="GENDER" FontSize="Small" Margin="15,0,0,0" TextColor="Gray"
+                                   Padding="0,10,0,0"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Frame x:Name="frameMale" Grid.Column="0">
+                                    <Frame.Content>
+                                        <StackLayout Orientation="Horizontal" 
+                                                     HorizontalOptions="FillAndExpand" 
+                                                     VerticalOptions="FillAndExpand">
+                                            <CheckBox x:Name="checkMale" Color="LightGreen" 
+                                                      CheckedChanged="malecheck_CheckedChanged" 
+                                                      HorizontalOptions="Center" VerticalOptions="Center" 
+                                                      IsChecked="False"  Margin="5,0,0,0"/>
+                                            <Label Text="Male" TextColor="Black" HorizontalOptions="StartAndExpand" 
+                                                   VerticalOptions="CenterAndExpand" FontSize="14"/>
+                                        </StackLayout>
+                                    </Frame.Content>
+                                </Frame>
+                                <Frame x:Name="frameFemale" Grid.Column="1">
+                                    <Frame.Content>
+                                        <StackLayout Orientation="Horizontal" 
+                                                     HorizontalOptions="FillAndExpand" 
+                                                     VerticalOptions="FillAndExpand">
+                                            <CheckBox x:Name="checkFemale" Color="LightGreen" 
+                                                      CheckedChanged="femalecheck_CheckedChanged" 
+                                                      HorizontalOptions="Center" VerticalOptions="Center" 
+                                                      IsChecked="False" Margin="5,0,0,0"/>
+                                            <Label Text="Female" TextColor="Black" FontSize="14" 
+                                                   HorizontalOptions="StartAndExpand" 
+                                                   VerticalOptions="CenterAndExpand"/>
+                                        </StackLayout>
+                                    </Frame.Content>
+                                </Frame>
+                            </Grid>
+
+                            <!--Date of birth-->
+                            <Label Text="DATE OF BIRTH" FontSize="Small" Margin="15,0,0,0" TextColor="Gray"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Frame x:Name="frameDay" Grid.Column="0">
+                                    <Frame.Content>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label x:Name="entryDay"  Grid.Column="0" 
+                                                   Text="Day"
+                                                   HorizontalTextAlignment="Center" 
+                                                   VerticalTextAlignment="Center" 
+                                                   FontSize="Small"/>
+                                            <Image Source="downArrow_16px.png" Grid.Column="1" 
+                                                   HeightRequest="15" HorizontalOptions="End"
+                                                   WidthRequest="15" Margin="0,0,10,0"/>
+                                            <Grid.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="Day_Tapped"/>
+                                            </Grid.GestureRecognizers>
+
+                                        </Grid>
+                                    </Frame.Content>
+                                </Frame>
+
+                                <Frame x:Name="frameMonth" Grid.Column="1">
+                                    <Frame.Content>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label x:Name="MonthEntry"  Grid.Column="0" 
+                                                   Text="Month"
+                                                   HorizontalTextAlignment="Center" 
+                                                   VerticalTextAlignment="Center"
+                                                   TextColor="Black" FontSize="Small"/>
+                                            <Image Source="downArrow_16px.png" Grid.Column="1" 
+                                                   HeightRequest="15" WidthRequest="15" 
+                                                   HorizontalOptions="End" Margin="0,0,10,0"/>
+                                            <Grid.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="Month_Tapped"/>
+                                            </Grid.GestureRecognizers>
+
+                                        </Grid>
+                                    </Frame.Content>
+                                </Frame>
+
+                                <Frame x:Name="frameYear" Grid.Column="2">
+                                    <Frame.Content>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label x:Name="YearEntry" Grid.Column="0"  
+                                                   Text="Year"
+                                                   HorizontalTextAlignment="Center" 
+                                                   VerticalTextAlignment="Center"  
+                                                   TextColor="Black" FontSize="Small"/>
+                                            <Image Source="downArrow_16px.png" Grid.Column="1" 
+                                                   HeightRequest="15" WidthRequest="15" 
+                                                   HorizontalOptions="End" Margin="0,0,10,0"/>
+                                            <Grid.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="Year_Tapped"/>
+                                            </Grid.GestureRecognizers>
+
+                                        </Grid>
+                                    </Frame.Content>
+                                </Frame>
+                            </Grid>
+
+                            <!--Religion-->
+                            <Label Text="RELIGION" FontSize="Small" Margin="15,0,0,0" TextColor="Gray"/>
+                            <Frame x:Name="frameReligion">
+                                <Frame.Content>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="0" HorizontalTextAlignment="Start" 
+                                               VerticalTextAlignment="Center" 
+                                               Text="{Binding Source={x:Reference ReligionList},Path=SelectedItem}" 
+                                               TextColor="Black" FontSize="Small"
+                                               Margin="10,0,0,0"/>
+                                        <Image Source="downArrow_16px.png" Grid.Column="1" 
+                                               HeightRequest="15" WidthRequest="15" 
+                                               HorizontalOptions="End" Margin="0,0,10,0"/>
+                                        <Grid.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="Religion_Tapped"/>
+                                        </Grid.GestureRecognizers>
+
+                                    </Grid>
+                                </Frame.Content>
+                            </Frame>
+
+                            <!--MotherTongue-->
+                            <Label Text="MOTHER TONGUE" FontSize="Small" Margin="15,0,0,0" TextColor="Gray"/>
+                            <Frame x:Name="frameMothertongue">
+                                <Frame.Content>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label x:Name="lblMotherTongue" Grid.Column="0" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" 
+                                               Text="{Binding Source={x:Reference MotherTonguelist},Path=SelectedItem}" 
+                                               TextColor="Black" FontSize="Small"
+                                               Margin="10,0,0,0"/>
+                                        <Image x:Name="imgMotherTongue" Grid.Column="1" HeightRequest="15" WidthRequest="15" 
+                                                   HorizontalOptions="End" Source="downArrow_16px.png" Margin="0,0,10,0"/>
+                                        <Grid.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="MotherTongue_Tapped"/>
+                                        </Grid.GestureRecognizers>
+
+                                    </Grid>
+                                </Frame.Content>
+                            </Frame>
+
+                            <!--COUNTRY CODE-->
+                            <Label Text="COUNTRY CODE" FontSize="Small" Margin="15,0,0,0" TextColor="Gray"/>
+                            <Frame x:Name="frameContryCode">
+                                <Frame.Content>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="0" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" 
+                                               Text="{Binding Source={x:Reference CountryCodelist},Path=SelectedItem}" 
+                                               x:Name="lblCountryCode" TextColor="Black" FontSize="Small" Margin="10,0,0,0"/>
+                                        <Image x:Name="imgCountryCode" Grid.Column="1" HeightRequest="15" WidthRequest="15"
+                                               HorizontalOptions="End" Source="downArrow_16px.png" Margin="0,0,10,0"/>
+                                        <Grid.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="CountryCode_Tapped"/>
+                                        </Grid.GestureRecognizers>
+
+                                    </Grid>
+                                </Frame.Content>
+                            </Frame>
+
+                            <!--MobileNumber-->
+                            <Label Text="MOBILE NUMBER" FontSize="Small" Margin="15,0,0,0" TextColor="Gray"/>
+                            <Frame x:Name="frameMobileNo">
+                                <Frame.Content>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <CusEntry:CustomEntry x:Name="entryMobileNo" Placeholder="ex: 9895xxxxxx"/>
+                                        <Image x:Name="imgMobileNumber" Grid.Column="1" HeightRequest="30" WidthRequest="30"
+                                               HorizontalOptions="End" Source="info_32px.png" Margin="0,0,10,0">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="MobileNo_Tapped"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                    </Grid>
+                                </Frame.Content>
+                            </Frame>
+
+                            <!--Email-->
+                            <Label Text="EMAIL" FontSize="Small" Margin="15,0,0,0" TextColor="Gray"/>
+                            <Frame x:Name="frameEmail">
+                                <Frame.Content>
+                                    <Grid>
+                                        <CusEntry:CustomEntry x:Name="entryEmail" Placeholder="youremail@gmail.com"/>
+                                    </Grid>
+                                </Frame.Content>
+                            </Frame>
+
+                            <!--Password-->
+                            <Label Text="PASSWORD" FontSize="Small" Margin="15,0,0,0" TextColor="Gray"/>
+                            <Frame x:Name="framePassword">
+                                <Frame.Content>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <CusEntry:CustomEntry x:Name="entryPassword" Grid.Column="0"
+                                                              IsPassword="{Binding Source={x:Reference imageShowPassword}, Path=IsVisible}"/>
+                                        <Image Grid.Column="1" HeightRequest="30" WidthRequest="30" 
+                                               x:Name="imageHidePassword" IsVisible="False"
+                                               Margin="0,0,10,0"
+                                               HorizontalOptions="End" Source="passwordHide.png">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="Password_Tapped"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                        <Image x:Name="imageShowPassword" IsVisible="True" Grid.Column="1" 
+                                               Margin="0,0,10,0"
+                                               HeightRequest="30" WidthRequest="30" Source="passwordShow.png">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="Password_Tapped"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                    </Grid>
+                                </Frame.Content>
+                            </Frame>
+
+                            <!--Register-->
+                            <Grid Padding="0,30,0,10">
+                                <Button HorizontalOptions="Center" VerticalOptions="Center" 
+                                        WidthRequest="200" HeightRequest="40" CornerRadius="25" 
+                                        BackgroundColor="Orange" TextColor="White" FontSize="Small" 
+                                        x:Name="btnRegister" Text="Register Free" Clicked="BtnRegister_Clicked"/>
+                            </Grid>
+                            <Grid Padding="0,0,0,20">
+                                <Label HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" 
+                                       VerticalTextAlignment="Center" HorizontalTextAlignment="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="By clicking this button,you accept our " FontSize="Small"  TextColor="Black" />
+                                            <Span Text="Terms and Conditions " FontSize="Small " TextColor="Blue" FontAttributes="Bold"/>
+                                            <Span Text="Applicable" FontSize="Small" TextColor="Black" LineHeight="1"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="PolicyTapped"/>
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </Grid>
+
+                        </StackLayout>
+                    </Grid>
+                </Grid>
+            </ScrollView>
+
+            <!--Profile created for-->
+            <ScrollView x:Name="authorsListView" BackgroundColor="#C0808080" HeightRequest="100" Padding="30" IsVisible="false">
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <StackLayout Orientation="Vertical"  BackgroundColor="White">
+                        <ListView ItemTapped="sampleList_ItemTapped"  x:Name="sampleList">
+                            <ListView.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>Myself</x:String>
+                                    <x:String>Son</x:String>
+                                    <x:String>Daughter</x:String>
+                                    <x:String>Brother</x:String>
+                                    <x:String>Sister</x:String>
+                                    <x:String>Relative</x:String>
+                                    <x:String>Friend</x:String>
+                                </x:Array>
+                            </ListView.ItemsSource>
+
+                        </ListView>
+                    </StackLayout>
+                </StackLayout>
+                <ScrollView.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="AuthorsContentViewTapped"/>
+                </ScrollView.GestureRecognizers>
+            </ScrollView>
+
+            <!--Day view-->
+            <ScrollView x:Name="DayView" BackgroundColor="#C0808080" HeightRequest="100" WidthRequest="30" Padding="30" 
+                        IsVisible="false">
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <StackLayout Orientation="Vertical"  BackgroundColor="White">
+                        <ListView x:Name="DayList" ItemTapped="DayList_ItemTapped" ItemsSource="{Binding Days}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                                            <Label Text="{Binding Date}" TextColor="Black"/>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                            <ListView.Header>
+                                <Label HorizontalOptions="Center" 
+                                           VerticalOptions="Center"
+                                           HeightRequest="30" 
+                                           Text="Day" TextColor="Black" 
+                                           FontAttributes="Bold"/>
+                            </ListView.Header>
+                        </ListView>
+
+                    </StackLayout>
+                </StackLayout>
+                <ScrollView.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="DayContentViewTapped"/>
+                </ScrollView.GestureRecognizers>
+            </ScrollView>
+
+            <!--MonthView-->
+            <ScrollView x:Name="MonthView" BackgroundColor="#C0808080" HeightRequest="100" Padding="30" IsVisible="false">
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <StackLayout Orientation="Vertical"  BackgroundColor="White">
+                        <ListView x:Name="MonthList" ItemTapped="MonthList_ItemTapped" ItemsSource="{Binding Months}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                                            <Label Text="{Binding Month}" TextColor="Black"/>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                            <ListView.Header>
+                                <Label HorizontalOptions="Center" 
+                                           VerticalOptions="Center"
+                                           HeightRequest="30" 
+                                           Text="Month" TextColor="Black" 
+                                           FontAttributes="Bold"/>
+                            </ListView.Header>
+                        </ListView>
+                    </StackLayout>
+                </StackLayout>
+                <ScrollView.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="MonthContentViewTapped"/>
+                </ScrollView.GestureRecognizers>
+            </ScrollView>
+
+            <!--YearView-->
+            <ScrollView x:Name="YearView" BackgroundColor="#C0808080" HeightRequest="100" Padding="30" IsVisible="false">
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <StackLayout Orientation="Vertical"  BackgroundColor="White">
+                        <ListView x:Name="YearList" ItemTapped="YearList_ItemTapped" ItemsSource="{Binding Years}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                                            <Label Text="{Binding Year}" TextColor="Black"/>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                            <ListView.Header>
+                                <Label HorizontalOptions="Center" 
+                                           VerticalOptions="Center"
+                                           HeightRequest="30" 
+                                           Text="Year" TextColor="Black" 
+                                           FontAttributes="Bold"/>
+                            </ListView.Header>
+                        </ListView>
+                    </StackLayout>
+                </StackLayout>
+                <ScrollView.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="YearViewContentTapped"/>
+                </ScrollView.GestureRecognizers>
+            </ScrollView>
+
+            <!--ReligionView-->
+            <ScrollView x:Name="ReligionView" BackgroundColor="#C0808080" HeightRequest="100" Padding="30" IsVisible="false">
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <StackLayout Orientation="Vertical"  BackgroundColor="White">
+                        <ListView x:Name="ReligionList" ItemTapped="ReligionList_ItemTapped">
+                            <ListView.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>Buddhist</x:String>
+                                    <x:String>Christian</x:String>
+                                    <x:String>Hidhu</x:String>
+                                    <x:String>Jain - Digambar</x:String>
+                                    <x:String>Jain - Shwetambar</x:String>
+                                    <x:String>Jain - Others</x:String>
+                                    <x:String>Jewish</x:String>
+                                    <x:String>Muslim - Shia</x:String>
+                                    <x:String>Muslim - Sunni</x:String>
+                                    <x:String>Parsi</x:String>
+                                    <x:String>Sikh</x:String>
+                                    <x:String>Inter-Religion</x:String>
+                                    <x:String>Others</x:String>
+                                </x:Array>
+                            </ListView.ItemsSource>
+                        </ListView>
+                    </StackLayout>
+                </StackLayout>
+                <ScrollView.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ReligionContentViewTapped"/>
+                </ScrollView.GestureRecognizers>
+            </ScrollView>
+
+            <!--MotherTongueView-->
+            <ScrollView x:Name="MotherTongueView" BackgroundColor="#C0808080" HeightRequest="100" Padding="30" IsVisible="false">
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <StackLayout Orientation="Vertical"  BackgroundColor="White">
+                        <ListView x:Name="MotherTonguelist" ItemTapped="MotherTonguelist_ItemTapped">
+                            <ListView.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>Tamil</x:String>
+                                    <x:String>Malaylam</x:String>
+                                    <x:String>Kanadam</x:String>
+                                    <x:String>Telugu</x:String>
+                                    <x:String>Urudhu</x:String>
+                                    <x:String>Hindhi</x:String>
+                                    <x:String>Others</x:String>
+                                </x:Array>
+                            </ListView.ItemsSource>
+                        </ListView>
+                    </StackLayout>
+                </StackLayout>
+                <ScrollView.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ReligionContentViewTapped"/>
+                </ScrollView.GestureRecognizers>
+            </ScrollView>
+
+            <!--Country Code view-->
+            <ScrollView x:Name="CountryCodeView" BackgroundColor="#C0808080" HeightRequest="100" Padding="30" IsVisible="false">
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <StackLayout Orientation="Vertical"  BackgroundColor="White">
+                        <ListView x:Name="CountryCodelist" ItemTapped="CountryCodelist_ItemTapped">
+                            <ListView.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>India(+91)</x:String>
+                                    <x:String>US(+1)</x:String>
+                                    <x:String>UA(+971)</x:String>
+                                    <x:String>UK(+44)</x:String>
+                                    <x:String>Singapore(+65)</x:String>
+                                    <x:String>Kuwait(+965)</x:String>
+                                    <x:String>Others</x:String>
+                                </x:Array>
+                            </ListView.ItemsSource>
+                        </ListView>
+                    </StackLayout>
+                </StackLayout>
+                <ScrollView.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="CountryCodeContentTapped"/>
+                </ScrollView.GestureRecognizers>
+            </ScrollView>
+
+        </Grid>
+    </ContentPage.Content>
+
+
+</ContentPage>

@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             mc:Ignorable="d"
+             x:Class="Matrimony.Views.Registration.AddHoroscope">
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <StackLayout Padding="15,10" Grid.Row="0">
+                    <Label Text="Fill the below details to genrate horoscope" FontSize="15" />
+                    <Label Text="Note: Date of birth can be edited only once" TextColor="Orange" FontSize="12" />
+                </StackLayout>
+                <Grid Grid.Row="1">
+                    <ScrollView>
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <!--Date Of Birth-->
+                            <Frame Grid.Row="0" Padding="10">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="Date of Birth" Grid.Column="0"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                    <Label Text=":" Grid.Column="1"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                    <DatePicker x:Name="datePicker"  Date="05/05/1995" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" FontSize="14" Grid.Column="2"/>
+                                    <Image Source="editblack.png" InputTransparent="True" Margin="10" Grid.Column="2" HeightRequest="20" WidthRequest="20"  HorizontalOptions="End" VerticalOptions="End"/>
+                                </Grid>
+                            </Frame>
+
+
+                            <!--Time of Birth-->
+                            <Frame Grid.Row="1" Padding="10">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="Time of Birth" Grid.Column="0"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                    <Label Text=":" Grid.Column="1"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                    <TimePicker x:Name="TimePicker" Time="4:0:0"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" FontSize="14" Grid.Column="2"/>
+                                    <Image Source="editblack.png" InputTransparent="True" Margin="10" Grid.Column="2" HeightRequest="20" WidthRequest="20"  HorizontalOptions="End" VerticalOptions="End"/>
+                                </Grid>
+                            </Frame>
+
+                            <!--Country of Birth-->
+                            <Frame Grid.Row="2" Padding="10">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="Country of Birth" Padding="10,0,0,0" Grid.Column="0"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                    <Label Text=":" Grid.Column="1"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                    <StackLayout Orientation="Horizontal"  Grid.Column="2">
+                                        <Label x:Name="CountryLabel" Text="Country of Birth" FontSize="14" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                        <Image Source="editblack.png" InputTransparent="True" Margin="10" HeightRequest="20" WidthRequest="20"  HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand"/>
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="CountryofBirth_Tapped"/>
+                                        </StackLayout.GestureRecognizers>
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+
+                            <!--State Of Birth-->
+                            <Frame Grid.Row="3" Padding="10">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="State of Birth" Padding="10,0,0,0" Grid.Column="0"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                    <Label Text=":" Grid.Column="1"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                    <StackLayout Orientation="Horizontal"  Grid.Column="2">
+                                        <Label x:Name="StateLabel" Text="State of Birth" FontSize="14" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                        <Image Source="editblack.png" InputTransparent="True" Margin="10" HeightRequest="20" WidthRequest="20"  HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand"/>
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="StateOfBirth_Tapped"/>
+                                        </StackLayout.GestureRecognizers>
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+
+                            <!--City Of Birth-->
+                            <Frame Grid.Row="4" Padding="10">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="City of Birth" Padding="10,0,0,0" Grid.Column="0"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                    <Label Text=":" Grid.Column="1"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                    <StackLayout Orientation="Horizontal"  Grid.Column="2">
+                                        <Label x:Name="CityOfBirthLabel" Text="City of Birth"  FontSize="14" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                        <Image Source="editblack.png" InputTransparent="True" Margin="10" HeightRequest="20" WidthRequest="20"  HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand"/>
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="CityOfBirthLabel_Tapped"/>
+                                        </StackLayout.GestureRecognizers>
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+
+                            <!--Chart Style-->
+                            <Frame Grid.Row="5" Padding="10">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="Chart Style" Padding="10,0,0,0" Grid.Column="0"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                    <Label Text=":" Grid.Column="1"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                    <StackLayout Orientation="Horizontal"  Grid.Column="2">
+                                        <Label x:Name="ChartStyleLabel" Text="Chart Style"  FontSize="14" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                        <Image Source="editblack.png" InputTransparent="True" Margin="10" HeightRequest="20" WidthRequest="20"  HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand"/>
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="ChartStyleLabel_Tapped"/>
+                                        </StackLayout.GestureRecognizers>
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+
+                            <!--Language-->
+                            <Frame Grid.Row="6" Padding="10">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="Language" Padding="10,0,0,0" Grid.Column="0"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                    <Label Text=":" Grid.Column="1"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                    <StackLayout Orientation="Horizontal"  Grid.Column="2">
+                                        <Label x:Name="LanguageLabel" Text="Language" FontSize="14" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                        <Image Source="editblack.png" InputTransparent="True" Margin="10" HeightRequest="20" WidthRequest="20"  HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand"/>
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="LanguageLabel_Tapped"/>
+                                        </StackLayout.GestureRecognizers>
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+
+                            <!--Generate Horoscope-->
+                            <Grid  Grid.Row="7" Padding="0,20,0,0">
+                                <Button ImageSource="AddHoroscope.png" ContentLayout="0,Left" HorizontalOptions="Center"  Text="Generate Horoscope" WidthRequest="250" HeightRequest="40"  CornerRadius="30" BackgroundColor="Orange" TextColor="White"/>
+                            </Grid>
+
+                            <!--Or Upload a scanned copy-->
+                            <Grid Grid.Row="8" Padding="5" >
+                                <Label Text="Or Upload a scanned copy of your Horoscope" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            </Grid>
+
+
+                            <!--UPLOAD HOROSCOPE-->
+                            <Grid Grid.Row="9">
+                                <Label  Text="UPLOAD HOROSCOPE" TextColor="Orange" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="UploadHoroscope_Tapped"/>
+                                </Grid.GestureRecognizers>
+                            </Grid>
+
+                            <!--Horoscope image-->
+                            <Image x:Name="HoroscopeImage" Grid.Row="10" HeightRequest="100" WidthRequest="100"  BackgroundColor="Gray"/>
+
+
+                        </Grid>
+                    </ScrollView>
+                </Grid>
+            </Grid>
+
+
+            <ContentView x:Name="PopupListView" BackgroundColor="#C0808080" HeightRequest="100" Padding="30" IsVisible="false">
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <StackLayout Orientation="Vertical"  BackgroundColor="White">
+                        <ListView x:Name="Listview" ItemTapped="ListItems_ItemTapped">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid>
+                                            <Label Text="{Binding Name}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+                </StackLayout>
+                <ContentView.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ListView_Tapped"/>
+                </ContentView.GestureRecognizers>
+            </ContentView>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:Controls="clr-namespace:PanCardView.Controls;assembly=PanCardView"
+             xmlns:Cards="clr-namespace:PanCardView;assembly=PanCardView"
+             xmlns:FFImage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:cardview="clr-namespace:Matrimony.ViewModels"
+             mc:Ignorable="d"
+             x:Class="Matrimony.Views.Common.ProfilePhotos"
+             BackgroundColor="Black">
+
+    <ContentPage.BindingContext>
+        <cardview:PhotosViewModel/>
+    </ContentPage.BindingContext>
+        <StackLayout Orientation="Vertical">
+                
+            <StackLayout HeightRequest="50">
+            <Image x:Name="imageUser" 
+                       HorizontalOptions="End" 
+                       VerticalOptions="Center"
+                       Margin="0,10,20,10"               
+                       Source="user_32px.png">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="ProfileGesture" Tapped="ProfileGesture_Tapped"/>
+                </Image.GestureRecognizers>
+            </Image>
+            </StackLayout>
+                
+            <Cards:CarouselView x:Name="carouselViewImages"
+                                ItemsSource="{Binding Images}"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                SlideShowDuration="4000"
+                                SelectedIndex="{Binding CurrentIndex}"
+                                Margin="5,0,5,0">
+                <Cards:CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <ContentView>
+                            <Frame CornerRadius="16" Padding="0" 
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="FillAndExpand"
+                                   HasShadow="True">
+                                <FFImage:CachedImage x:Name="imagePhotos" 
+                                                 Source="{Binding Source}"
+                                                 HorizontalOptions="FillAndExpand"
+                                                 VerticalOptions="FillAndExpand"
+                                                 Aspect="AspectFill"
+                                                 Margin="0"/>
+                            </Frame>
+                        </ContentView>
+                    </DataTemplate>
+                </Cards:CarouselView.ItemTemplate>
+
+                <!--ToFadeDuration-->
+                <Controls:IndicatorsControl/>
+                <Controls:LeftArrowControl ToFadeDuration="1000"  IsVisible="false" ImageSource="arrowLeft_32px.png"/>
+                <Controls:RightArrowControl ToFadeDuration="1000" IsVisible="false" ImageSource="arrowRight_32px.png"/>
+
+            </Cards:CarouselView>
+
+        <StackLayout HeightRequest="50" Orientation="Horizontal">
+            <Image x:Name="imageShortlist" 
+                       HorizontalOptions="Start" 
+                       VerticalOptions="Center"
+                       Margin="20,10,30,10"               
+                       Source="shortlist_32px.png">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="ShortlistGesture" Tapped="ShortlistGesture_Tapped"/>
+                </Image.GestureRecognizers>
+            </Image>
+
+            <Image x:Name="imageSkip" 
+                       HorizontalOptions="StartAndExpand" 
+                       VerticalOptions="Center"
+                       Margin="0,10,30,10"               
+                       Source="skip_32px.png">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="SkipGesture" Tapped="SkipGesture_Tapped"/>
+                </Image.GestureRecognizers>
+            </Image>
+
+            <Image x:Name="imageSendInterest" 
+                       HorizontalOptions="End" 
+                       VerticalOptions="Center"
+                       Margin="0,10,20,10"               
+                       Source="email_32px.png">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="SendInterestGesture" Tapped="SendInterestGesture_Tapped"/>
+                </Image.GestureRecognizers>
+            </Image>
+        </StackLayout>
+            
+    </StackLayout>
+
+</ContentPage>

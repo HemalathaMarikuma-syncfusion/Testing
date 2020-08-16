@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:IC="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             mc:Ignorable="d"
+             x:Class="Matrimony.Views.MailBox.MailBoxPage">
+    <ContentPage.Content>
+        <RelativeLayout x:Name="relativeCompletePage">
+
+            <StackLayout x:Name="stackNavigationBar" 
+                         Orientation="Horizontal" 
+                         BackgroundColor="#69B7FF"
+                         RelativeLayout.WidthConstraint="{ConstraintExpression 
+                                                            Type=RelativeToParent,
+                                                            Property=Width,Factor=1}"
+                         RelativeLayout.HeightConstraint="{ConstraintExpression 
+                                                            Type=RelativeToParent,
+                                                            Property=Height,Factor=.1}">
+                <Image Margin="15,0,0,0" Source="back_32px.png" 
+                       HeightRequest="23" WidthRequest="23">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="BackArrow_Tapped"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label VerticalOptions="Center" VerticalTextAlignment="Center"
+                       HorizontalOptions="CenterAndExpand"
+                       Margin="0,10,10,0">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Mail Box  " TextColor="White" FontSize="Title"/>
+                            <Span x:Name="spanMailType" Text="All" TextColor="White" FontSize="Micro"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+
+            <StackLayout x:Name="stackMailTypes" BackgroundColor="WhiteSmoke"
+                         Grid.Row="1" IsVisible="true"
+                         Orientation="Horizontal"
+                         RelativeLayout.WidthConstraint="{ConstraintExpression 
+                                                            Type=RelativeToParent,
+                                                            Property=Width,Factor=1}"
+                         RelativeLayout.YConstraint="{ConstraintExpression 
+                                                        Type=RelativeToView,
+                                                        ElementName=stackNavigationBar,
+                                                        Property=Height,
+                                                        Factor=1}"
+                         RelativeLayout.HeightConstraint="{ConstraintExpression 
+                                                        Type=RelativeToView,
+                                                        ElementName=stackNavigationBar,
+                                                        Property=Height,
+                                                        Factor=.9}">
+
+                <Frame CornerRadius="18" 
+                       WidthRequest="180" 
+                       HeightRequest="20"
+                       Padding="0"
+                       Margin="0,10,0,10"
+                       BorderColor="Transparent"
+                       BackgroundColor="White"
+                       HorizontalOptions="CenterAndExpand">
+                    <StackLayout Orientation="Horizontal" 
+                                 HeightRequest="20"
+                                 BackgroundColor="Transparent"
+                                 Padding="0"
+                                 Spacing="0"
+                                 Margin="0">
+                        <Frame WidthRequest="90" 
+                               HeightRequest="20"
+                               CornerRadius="18"
+                               Padding="0"
+                               x:Name="frameReceived"
+                               BorderColor="Transparent"
+                               BackgroundColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ReceivedGesture_Tapped"/>
+                            </Frame.GestureRecognizers>
+                            <Label Text="Received" 
+                                   x:Name="lblReceived"
+                                   Margin="0"
+                                   HorizontalOptions="Center" 
+                                   VerticalOptions="Center"/>
+                        </Frame>
+                        <Frame WidthRequest="90" 
+                               HeightRequest="20"
+                               CornerRadius="18"
+                               Padding="0"
+                               x:Name="frameSent"
+                               BorderColor="Transparent"
+                               BackgroundColor="Green">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="SentGesture_Tapped"/>
+                            </Frame.GestureRecognizers>
+                            <Label Text="Sent" TextColor="White"
+                                   Margin="0" x:Name="lblSent"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"/>
+                        </Frame>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+
+            
+            <StackLayout x:Name="stackMailStatus" BackgroundColor="White"
+                         Grid.Row="1" IsVisible="true"
+                         Orientation="Horizontal"
+                         RelativeLayout.WidthConstraint="{ConstraintExpression 
+                                                            Type=RelativeToParent,
+                                                            Property=Width,Factor=1}"
+                         RelativeLayout.YConstraint="{ConstraintExpression 
+                                                        Type=RelativeToView,
+                                                        ElementName=stackNavigationBar,
+                                                        Property=Height,
+                                                        Factor=1.9}"
+                         RelativeLayout.HeightConstraint="{ConstraintExpression 
+                                                        Type=RelativeToView,
+                                                        ElementName=stackNavigationBar,
+                                                        Property=Height,
+                                                        Factor=1}">
+                <Grid HorizontalOptions="FillAndExpand" 
+                      ColumnSpacing="25"
+                      Margin="10,0,10,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35"/>
+                        <ColumnDefinition Width="35"/>
+                        <ColumnDefinition Width="35"/>
+                        <ColumnDefinition Width="35"/>
+                        <ColumnDefinition Width="35"/>
+                        <ColumnDefinition Width="35"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Image Grid.Column="0" 
+                           x:Name="imageAllMatches" 
+                           Source="pending_32px.png"
+                           Margin="5,0,7,0" 
+                           HorizontalOptions="Start"/>
+                    <Image Grid.Column="1" 
+                           x:Name="imageStar" 
+                           Source="skip_32px.png" 
+                           HorizontalOptions="Start"/>
+                    <Image Grid.Column="2" 
+                             x:Name="imagePremium" 
+                             Source="skip_32px.png" 
+                             HorizontalOptions="Start"/>
+                    <Image Grid.Column="3" 
+                           x:Name="imageProffession" 
+                           Source="chat_32px.png" 
+                           HorizontalOptions="End"/>
+                    <Image Grid.Column="4" 
+                           x:Name="imageMutual" 
+                           Source="camera_32px.png" 
+                           HorizontalOptions="End"/>
+                    <Image Grid.Column="5" 
+                           x:Name="imageNearby" 
+                           Source="camera_32px.png" 
+                           HorizontalOptions="End"/>
+                </Grid>
+            </StackLayout>
+
+            <ListView x:Name="ListViewMatches" 
+                      SeparatorColor="LightGray" 
+                      ItemTapped="ListViewMail_ItemTapped"
+                      VerticalScrollBarVisibility="Never"
+                      ItemDisappearing="ListViewMail_ItemDisappearing"
+                      HasUnevenRows="True"
+                      RelativeLayout.YConstraint="{ConstraintExpression 
+                                                    Type=RelativeToView,
+                                                    ElementName=stackNavigationBar,
+                                                    Property=Height,Constant=2,
+                                                    Factor=3}"
+                      RelativeLayout.HeightConstraint="{ConstraintExpression
+                                                        Type=RelativeToParent,
+                                                        Property=Height,
+                                                        Factor=1}"
+                      RelativeLayout.WidthConstraint="{ConstraintExpression
+                                                        Type=RelativeToParent,
+                                                        Property=Width,
+                                                        Factor=.8}">
+                
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+
+                            <Frame Margin="5,2,5,2" BorderColor="White" CornerRadius="14" HasShadow="False">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+
+                                    <StackLayout>
+
+                                        <StackLayout BackgroundColor="White" Orientation="Horizontal" 
+                                                     Padding="5,10,5,0" Grid.Row="0">
+                                            <StackLayout Margin="0,0,0,0" 
+                                                         BackgroundColor="#16D679" 
+                                                         Padding="0,10,10,0">
+                                                <IC:CircleImage WidthRequest="80" 
+                                                                HeightRequest="80" 
+                                                                Aspect="AspectFill" 
+                                                                Source="KeralaBackwaterImage.png" 
+                                                                VerticalOptions="CenterAndExpand" 
+                                                                HorizontalOptions="CenterAndExpand"/>
+                                            </StackLayout>
+
+                                            <StackLayout Orientation="Vertical" 
+                                                 VerticalOptions="StartAndExpand" 
+                                                 HorizontalOptions="StartAndExpand">
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Image x:Name="imageVerified" 
+                                                           HeightRequest="25" WidthRequest="25" 
+                                                           VerticalOptions="EndAndExpand" 
+                                                           Source="Verified_32px.png" IsVisible="{Binding IsVerified}"/>
+                                                    <Image x:Name="imageNotVerified" 
+                                                           HeightRequest="20" WidthRequest="20" 
+                                                           Source="verifiedNot_32px.png" IsVisible="False"/>
+                                                    <Label Text="{Binding Name}" Margin="0,18,0,0" 
+                                                            TextColor="Black" FontAttributes="Bold" 
+                                                            FontSize="Medium"/>
+                                                </StackLayout>
+
+                                                <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+                                                    <Label Text="{Binding Age}" TextColor="Black" FontSize="Small"/>
+                                                    <Label Text="{Binding Height}" TextColor="Black" FontSize="Small"/>
+                                                    <Label Text="{Binding Qualification}" TextColor="Black" FontSize="Small"/>
+                                                </StackLayout>
+                                                <StackLayout  Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+                                                    <Label Text="{Binding Caste}" TextColor="Black" FontSize="Small"/>
+                                                    <Label Text="{Binding Star}" TextColor="Black" FontSize="Small"/>
+                                                    <Label Text="{Binding Location}" TextColor="Black" FontSize="Small"/>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+                                                    <Label Text="{Binding District}" TextColor="Black" FontSize="Small"/>
+                                                    <Label Text="{Binding State}" TextColor="Black" FontSize="Small"/>
+                                                </StackLayout>
+                                            </StackLayout>
+                                            
+                                        </StackLayout>
+
+                                        <StackLayout Grid.Row="1" Orientation="Horizontal" Margin="0,6,0,0">
+                                            <Grid HorizontalOptions="EndAndExpand">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="35"/>
+                                                </Grid.RowDefinitions>
+
+                                                <Frame CornerRadius="18" Padding="3,0,0,0"
+                                                       BorderColor="Transparent"
+                                                       Grid.Column="3" x:Name="frameReject"
+                                                       BackgroundColor="Orange" Margin="0,4,10,4">
+                                                    <Label Text="no" FontSize="Small" 
+                                                            Margin="10,0,0,0" 
+                                                            TextColor="White"
+                                                            VerticalOptions="Center"
+                                                            HorizontalOptions="Center">
+                                                        <Label.GestureRecognizers>
+                                                            <TapGestureRecognizer x:Name="TapReject" 
+                                                                                  Tapped="TapReject_Tapped"/>
+                                                        </Label.GestureRecognizers>
+                                                    </Label>
+                                                </Frame>
+
+                                                <Frame CornerRadius="18" Padding="3,0,0,0"
+                                                       BorderColor="Transparent"
+                                                       Grid.Column="3" x:Name="frameAccept"
+                                                       BackgroundColor="Orange" Margin="0,4,10,4">
+                                                        <Label Text="yes" FontSize="Small" 
+                                                               Margin="10,0,0,0" 
+                                                               TextColor="White"
+                                                               VerticalOptions="Center"
+                                                               HorizontalOptions="Center">
+                                                            <Label.GestureRecognizers>
+                                                                <TapGestureRecognizer x:Name="TapAccept" 
+                                                                                  Tapped="TapAccept_Tapped"/>
+                                                            </Label.GestureRecognizers>
+                                                        </Label>
+                                                </Frame>
+
+                                            </Grid>
+                                        </StackLayout>
+
+                                    </StackLayout>
+
+                                </Grid>
+                            </Frame>
+                            
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </RelativeLayout>
+
+    </ContentPage.Content>
+</ContentPage>

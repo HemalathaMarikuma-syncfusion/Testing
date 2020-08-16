@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Matrimony.Views.Registration.Location">
+
+    <ContentPage.Content>
+        <Grid BackgroundColor="White">
+            <ScrollView BackgroundColor="White">
+                <Grid Padding="20" RowSpacing="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0" Padding="5">
+                        <Label Text="LOCATION"  HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" FontSize="20"/>
+                    </Grid>
+
+                    <Frame Padding="2" BorderColor="Transparent" Grid.Row="1">
+                        <StackLayout Spacing="0">
+                            <Label Text="Country Living in"/>
+                            <Picker>
+                                <Picker.Items>
+                                    <x:String>India</x:String>
+                                    <x:String>USA</x:String>
+                                    <x:String>Saudi</x:String>
+                                    <x:String>Kuwai</x:String>
+                                    <x:String>UK</x:String>
+                                    <x:String>Singapore</x:String>
+                                    <x:String>Australia</x:String>
+                                    <x:String>Canada</x:String>
+                                    <x:String>Others</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame Padding="2" BorderColor="Transparent" Grid.Row="2">
+                        <StackLayout Spacing="0">
+                            <Label Text="Residing State"/>
+                            <Picker>
+                                <Picker.Items>
+                                    <x:String>Tamilnadu</x:String>
+                                    <x:String>Andra</x:String>
+                                    <x:String>Chanidagar</x:String>
+                                    <x:String>Daman</x:String>
+                                    <x:String>Goa</x:String>
+                                    <x:String>Gujarat</x:String>
+                                    <x:String>Himachal</x:String>
+                                    <x:String>Canada</x:String>
+                                    <x:String>Karnataka</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame Padding="2" BorderColor="Transparent" Grid.Row="3">
+                        <StackLayout Spacing="0">
+                            <Label Text="Residing City"/>
+                            <Picker>
+                                <Picker.Items>
+                                    <x:String>Chennai</x:String>
+                                    <x:String>Chengalpatu</x:String>
+                                    <x:String>Dharmapurai</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame Padding="2" BorderColor="Transparent" Grid.Row="4">
+                        <StackLayout Spacing="0">
+                            <Label Text="Citizenship"/>
+                            <Picker>
+                                <Picker.Items>
+                                    <x:String>India</x:String>
+                                    <x:String>USA</x:String>
+                                    <x:String>Saudi</x:String>
+                                    <x:String>Kuwai</x:String>
+                                    <x:String>UK</x:String>
+                                    <x:String>Singapore</x:String>
+                                    <x:String>Australia</x:String>
+                                    <x:String>Canada</x:String>
+                                    <x:String>Others</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </StackLayout>
+                    </Frame>
+
+
+                    <Grid Padding="15" Grid.Row="5">
+                        <Button x:Name="LocationSaveButton" Text="SAVE"  WidthRequest="250" BackgroundColor="Orange" CornerRadius="20" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                    </Grid>
+                </Grid>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

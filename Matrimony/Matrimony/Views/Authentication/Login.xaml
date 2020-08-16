@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:local="clr-namespace:Matrimony.Customization"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"  NavigationPage.HasNavigationBar="False"
+             x:Class="Matrimony.Views.Authentication.Login"
+             BackgroundColor="White">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            
+            <!--Need?-->
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="FontFamily" Value="Calibri"/>
+            </Style>
+
+            <Style TargetType="Frame">
+                <Setter Property="HeightRequest" Value="35"/>
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackLayout Orientation="Vertical" Padding="-1">
+                <StackLayout Orientation="Horizontal" HeightRequest="60" Padding="-10">
+                    <Image Source="https://picsum.photos/1200/300" 
+                       HorizontalOptions="FillAndExpand" Margin="0,0,0,0" WidthRequest="60"/>
+                    <Label Text="Register free" TextColor="Orange"
+                       VerticalOptions="Center" FontSize="Small"
+                       HorizontalOptions="EndAndExpand"
+                       Margin="0,0,20,0">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="RegisterTapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+                <BoxView BackgroundColor="lightGray" Margin="-5"
+                         HeightRequest=".3"/>
+            </StackLayout>
+            
+            <Grid Grid.Row="1" Padding="20,20">
+                <StackLayout>
+                    <Label Text="LOGIN" FontSize="Medium" Padding="15,10,0,20" TextColor="Gray"
+                           HorizontalOptions="Center" VerticalOptions="Start"/>
+
+                    <StackLayout Margin="15,10,15,10">
+                        <Label Text="Mobile No / Email ID / Login ID" FontSize="Small" 
+                               Padding="10,10,0,0" HorizontalOptions="Start" VerticalOptions="Start"
+                               IsVisible="{Binding Source={x:Reference entryLoginID}, Path=IsFocused}"/>
+                        <Frame BorderColor="LightGray" HasShadow="False" Padding="5" CornerRadius="30">
+                            <Frame.Content>
+                                <local:CustomEntry x:Name="entryLoginID" Placeholder="Mobile No / Email ID / Login ID" 
+                                                   HeightRequest="35"
+                                                   FontSize="Small" TextColor="Black"/>
+                            </Frame.Content>
+                        </Frame>
+                    </StackLayout>
+
+                    <StackLayout Margin="15,10,15,20">
+                        <Label Text="Password" FontSize="Small" Padding="10,10,0,0" 
+                               HorizontalOptions="Start" VerticalOptions="Start"                               
+                               IsVisible="{Binding Source={x:Reference enrtyPassword}, Path=IsFocused}"/>
+                        <Frame BorderColor="LightGray" HasShadow="False" Padding="5" CornerRadius="30">
+                            <Frame.Content>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <local:CustomEntry x:Name="enrtyPassword" Placeholder="Password" 
+                                                   HeightRequest="35"
+                                                   FontSize="Small" TextColor="Black" IsPassword="{Binding Source={x:Reference imageShowPassword}, Path=IsVisible}"/>
+                                    <Image Grid.Column="1" HeightRequest="30" WidthRequest="30" 
+                                               x:Name="imageHidePassword" IsVisible="False"
+                                               Margin="0,0,10,0"
+                                               HorizontalOptions="End" Source="passwordHide.png">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="Password_Tapped"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    <Image x:Name="imageShowPassword" IsVisible="True" Grid.Column="1" 
+                                               Margin="0,0,10,0"
+                                               HeightRequest="30" WidthRequest="30" Source="passwordShow.png">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="Password_Tapped"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </Grid>
+                            </Frame.Content>
+                        </Frame>
+                    </StackLayout>
+
+
+                    <StackLayout Spacing="25">
+                        <Button Text="Login" HeightRequest="45" WidthRequest="180" 
+                                CornerRadius="25" 
+                                HorizontalOptions="Center" VerticalOptions="Center"
+                                BackgroundColor="Orange" TextColor="white"/>
+
+                        <StackLayout Orientation="Horizontal" Spacing="0">
+
+                            <Label Text="Login via OTP" TextColor="Orange"
+                                   HorizontalOptions="CenterAndExpand" 
+                                   VerticalOptions="Center"
+                                   FontSize="Small">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OTP_Tapped"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+
+                            <Label Text="Forgot password?" TextColor="Orange"
+                                   HorizontalOptions="CenterAndExpand" Margin="0,0,15,0"
+                                   VerticalOptions="Center"
+                                   FontSize="Small" >
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="ForgotPassword_Tapped"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+
+                        </StackLayout>
+
+                        <Frame CornerRadius="18" HeightRequest="20" BackgroundColor="#56BA70" 
+                               Padding="2" Margin="40,0,40,0">
+                            <Label Text="Are you not yet registered?" FontSize="Small" 
+                                   FontFamily="Kunstler Script" FontAttributes="Italic"
+                                   HorizontalOptions="Center" VerticalOptions="Center"
+                                   TextColor="White">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Register_Tapped"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </Frame>
+                        <!--<Button Text=" Not a member? Register Free " 
+                                FontSize="Small"
+                                BackgroundColor="#3AF256"
+                                HorizontalOptions="CenterAndExpand" 
+                                VerticalOptions="Center" 
+                                CornerRadius="18"                                
+                                HeightRequest="35"                              
+                                TextColor="White"/>-->
+                    </StackLayout>
+
+                </StackLayout>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+
+
+</ContentPage>

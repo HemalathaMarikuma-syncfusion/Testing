@@ -1,0 +1,835 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" NavigationPage.HasNavigationBar="False"
+             xmlns:local="clr-namespace:Matrimony.ViewModels"
+             x:Class="Matrimony.Views.Registration.UpdateProfileDetailsPage" Title="Add Profile Information" BackgroundColor="White" >
+  
+    <ContentPage.BindingContext>      
+      <local:UpdateProfileViewModel/>
+    </ContentPage.BindingContext>
+  
+    <Grid>
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid x:Name="Photo" RowSpacing="0" Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!--TitleBar-->
+                    <StackLayout Orientation="Horizontal" Padding="10,0" BackgroundColor="Blue">
+                        <Image Source="back_32px.png"  HeightRequest="25" WidthRequest="25">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="BackArrowTapped"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label Text="EDIT PROFILE" Padding="10,0" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"/>
+                        <Image Grid.Column="0" Source="Preview.png" Margin="0,0,-5,0" HeightRequest="20" WidthRequest="25" />
+                        <Button Text="PREVIEW" Padding="0,0,20,0" BackgroundColor="Transparent" TextColor="White"  FontSize="10"/>
+                    </StackLayout>
+
+                    <!--Profile Image with Options-->
+                    <Grid  Grid.Row="1" HeightRequest="250">
+                        <Image x:Name="mainimage" BackgroundColor="LightGray" Aspect="AspectFit" Source="profile" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                        <Grid VerticalOptions="EndAndExpand" ColumnSpacing="0" Padding="10,0,10,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <StackLayout Grid.Column="0" Orientation="Vertical">
+                                <Label Text="Profile Completenes" TextColor="White" 
+                                       HorizontalOptions="CenterAndExpand" 
+                                       FontSize="Micro" VerticalOptions="CenterAndExpand"/>
+                                <ProgressBar BackgroundColor="WhiteSmoke" HeightRequest="20" 
+                                             HorizontalOptions="FillAndExpand" 
+                                             VerticalOptions="FillAndExpand" 
+                                             Progress="{Binding ProfileCompletion}" 
+                                             ProgressColor="Green"/>
+                            </StackLayout>
+                            
+                            <StackLayout Grid.Column="1" BackgroundColor="Transparent" Orientation="Vertical">
+                                <Image Source="EditContact.png" HeightRequest="20" WidthRequest="30" 
+                                       HorizontalOptions="CenterAndExpand" 
+                                       VerticalOptions="CenterAndExpand"/>
+                                <Label BackgroundColor="Transparent" TextColor="White" 
+                                       FontSize="10" Text="EDIT CONTACT" LineBreakMode="WordWrap" 
+                                       HorizontalTextAlignment="Center" 
+                                       VerticalTextAlignment="Center" 
+                                       HorizontalOptions="CenterAndExpand" 
+                                       VerticalOptions="CenterAndExpand"/>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="EditContact_Tapped"/>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                            
+                            <StackLayout Grid.Column="2" BackgroundColor="Transparent" Orientation="Vertical">
+                                <Image Source="AddHoroscope.png" HeightRequest="20" 
+                                       BackgroundColor="Transparent" HorizontalOptions="CenterAndExpand" 
+                                       VerticalOptions="CenterAndExpand"/>
+                                <Label Text="ADD HOROSCOPE" TextColor="White" FontSize="10" LineBreakMode="WordWrap" 
+                                       VerticalTextAlignment="Center" HorizontalTextAlignment="Center" 
+                                       HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="AddHoroscope_Tapped"/>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                            
+                            <StackLayout Grid.Column="3" BackgroundColor="Transparent" Orientation="Vertical">
+                                <Image Source="AddPhotos.png" HeightRequest="20" BackgroundColor="Transparent" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                <Label Text="MANAGE PHOTOS" TextColor="White" FontSize="10" LineBreakMode="WordWrap" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="AddPhotos_Tapped"/>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                          
+                        </Grid>
+                    </Grid>
+
+                </Grid>
+
+
+                <Grid Padding="10,0" Grid.Row="1">
+                    
+                    <StackLayout Orientation="Vertical">
+
+                        <!--PERSONAL INFORMATION-->
+                        <Label Text="PERSONAL INFORMATION" Padding="10" TextColor="LimeGreen" FontAttributes="Bold" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" FontSize="15"/>
+                        <BoxView BackgroundColor="LightGray" Margin="0,10" HeightRequest="1"/>
+
+                        <!--A few words about my son-->
+                        <Grid x:Name="About" Padding="10,0" RowSpacing="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="50"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="Fewwords.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                <Label Grid.Column="1" Text="A few words about my son" FontAttributes="Bold" Padding="20,0" TextColor="Black"/>
+                                <Image Grid.Column="2" Source="edit.png" HeightRequest="15" WidthRequest="15" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Fewwords_Tapped"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </Grid>
+                            <Grid Grid.Row="1" Padding="0,20,0,10">
+                                <Label x:Name="Aboutlabel" Text="Browse and pick the XAML pages you want to include in your Xamarin.Forms project directly from Grial UI Kit admin." TextColor="Black"/>
+                            </Grid>
+                        </Grid>
+                        
+                        <BoxView BackgroundColor="LightGray" Margin="0,10" HeightRequest="1"/>
+                        
+                        <!--Basic Details-->
+                        <Grid Padding="10,0" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="50"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="BasicDetails.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                <Label Grid.Column="1" Text="Basic Details" FontAttributes="Bold" Padding="20,0" TextColor="Black"/>
+                                <Image Grid.Column="2" Source="edit.png" HeightRequest="15" WidthRequest="15" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="BasicDetails_Tapped"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </Grid>
+                          
+                            <StackLayout Grid.Row="1" Orientation="Horizontal" Padding="10,20,10,10">
+                                <Label Text="Get more responses by verifying your name and age" />
+                                <Button BackgroundColor="DarkOrange" FontSize="10" WidthRequest="120" HeightRequest="25" 
+                                        Text="Get Identity Badge >" TextColor="White" CornerRadius="25"/>
+                            </StackLayout>
+                        </Grid>
+                        
+                        <BoxView BackgroundColor="LightGray" HeightRequest="1" Margin="0,10"/>
+                        
+                        <!--Basic Details Column-->
+                        <Grid Padding="10,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Padding="10,10" Orientation="Vertical">
+                                <Label Text="Name" TextColor="Black"/>
+                                <Label Text="Age" TextColor="Black"/>
+                                <Label Text="Height" TextColor="Black"/>
+                                <Label Text="Weight" TextColor="Black"/>
+                                <Label Text="Marital Status" TextColor="Black"/>
+                                <Label Text="Mother Tongue" TextColor="Black"/>
+                                <Label Text="Physical Status" TextColor="Black"/>
+                                <Label Text="Body Type" TextColor="Black"/>
+                                <Label Text="Complexion" TextColor="Black"/>
+                                <Label Text="Profile Created By" TextColor="Black"/>
+                                <Label Text="Eating Habits" TextColor="Black"/>
+                                <Label Text="Drinking Habits" TextColor="Black"/>
+                                <Label Text="Smoking Habits" TextColor="Black"/>
+                            </StackLayout>
+                            <StackLayout  Padding="10,10" Grid.Column="1" Orientation="Vertical">
+                                <Label Text="Name" TextColor="Black"/>
+                                <Label Text="Age" TextColor="Black"/>
+                                <Label Text="Height" TextColor="Black"/>
+                                <Label Text="Weight" TextColor="Black"/>
+                                <Label Text="Marital Status" TextColor="Black"/>
+                                <Label Text="Mother Tongue" TextColor="Black"/>
+                                <Label Text="Physical Status" TextColor="Black"/>
+                                <Grid RowSpacing="0">
+                                    <Label x:Name="BodTypeLabel" Text="+ Add Details" IsVisible="True" BackgroundColor="Transparent" TextColor="Red">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="BodTypeLabel_Tapped" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Grid>
+                                <Grid RowSpacing="0">
+                                    <Label x:Name="ComplexionLabel"  Text="+ Add Details" IsVisible="True" BackgroundColor="Transparent" TextColor="Red">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="Complexion_Tapped" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Grid>
+                                <Label Text="Profile Created By" TextColor="Black"/>
+                                <Grid RowSpacing="0">
+                                    <Label x:Name="EatingHabitsLabel" Text="+ Add Details" IsVisible="True" BackgroundColor="Transparent" TextColor="Red">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="EatingHabits_Tapped" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Grid>
+                                <Grid RowSpacing="0">
+                                    <Label x:Name="DrinkingHabitsLabel" Text="+ Add Details" IsVisible="True" BackgroundColor="Transparent" TextColor="Red">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="DrinkingHabitsLabel_Tapped_" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Grid>
+                                <Grid RowSpacing="0">
+                                    <Label Text="Smoking Habits" IsVisible="False" TextColor="Black"/>
+                                    <Label x:Name="SmokingHabitsLabel" Text="+ Add Details" IsVisible="True" BackgroundColor="Transparent" TextColor="Red">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="SmokingHabits_Tapped" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Grid>
+                            </StackLayout>
+                        </Grid>
+                        
+                        <BoxView BackgroundColor="LightGray" HeightRequest="1" Margin="0,10"/>
+                        
+                        <!--Religious Information-->                       
+                            <Grid Padding="10,0" >
+                                <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="50"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="50"/>
+                                    </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Source="Religious.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                <Label Grid.Column="1" Text="Religious Information" FontAttributes="Bold" Padding="20,0" TextColor="Black"/>
+                            <Image Grid.Column="2" Source="edit.png" HeightRequest="15" WidthRequest="15" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="ReligiousInformation_Tapped"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Grid>
+                       
+                        
+                        <!--Religious Information details-->
+                        <Grid Padding="10,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Padding="10,10" Orientation="Vertical">
+                                <Label Text="Religion" TextColor="Black"/>
+                                <Label Text="Caste" TextColor="Black"/>
+                                <Label Text="Gothra" TextColor="Black"/>
+                                <Label Text="Zodiac" TextColor="Black"/>
+                                <Label Text="Star" TextColor="Black"/>
+                                <Label Text="Raasi" TextColor="Black"/>
+                                <Label Text="Dhosham" TextColor="Black"/>
+                            </StackLayout>
+                            <StackLayout Padding="10,10" Grid.Column="1" Orientation="Vertical">
+                                <Label Text="Religion" TextColor="Black"/>
+                                <Label Text="Caste" TextColor="Black"/>
+                                <Grid RowSpacing="0">
+                                    <Label x:Name="GothraLabel" Text="+ Add Details" IsVisible="True" BackgroundColor="Transparent" TextColor="Red">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="GothraLabel_Tapped" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Grid>
+                                <Grid RowSpacing="0">
+                                    <Label x:Name="ZodiacLabel" Text="+ Add Details" IsVisible="True" BackgroundColor="Transparent" TextColor="Red">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="ZodiacLabel_Tapped" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Grid>
+                                <Grid RowSpacing="0">
+                                    <Label x:Name="StarLabel" Text="+ Add Details" IsVisible="True" BackgroundColor="Transparent" TextColor="Red">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="StarLabel_Tapped" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Grid>
+                                <Grid RowSpacing="0">
+                                    <Label x:Name="RaasiLabel" Text="+ Add Details" IsVisible="True" BackgroundColor="Transparent" TextColor="Red">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="RaasiLabel_Tapped" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Grid>
+                                <Grid RowSpacing="0">
+                                    <Label x:Name="DoshamLabel" Text="+ Add Details" IsVisible="True" BackgroundColor="Transparent" TextColor="Red">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="DoshamLabel_Tapped" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Grid>
+                            </StackLayout>
+                        </Grid>
+                        
+                        <BoxView BackgroundColor="LightGray" HeightRequest="1" Margin="0,10"/>
+
+                        <!--Professional Information-->
+                            <Grid Padding="10,0" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="50"/>
+                                </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Source="Professional.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                <Label Grid.Column="1" Text="Professional Information" FontAttributes="Bold" Padding="20,0" TextColor="Black"/>
+                            <Image Grid.Column="2" Source="edit.png" HeightRequest="15" WidthRequest="15" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Professional_Tapped"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Grid>
+                         
+                        <!--Professional details-->
+                        <Grid Padding="10,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Padding="10,10" Orientation="Vertical">
+                                <Label Text="Education Category" TextColor="Black"/>
+                                <Label Text="College/Institution" TextColor="Black"/>
+                                <Label Text="Occupation" TextColor="Black"/>
+                                <Label Text="Employed In" TextColor="Black"/>
+                            </StackLayout>
+                            <StackLayout  Padding="10,10" Grid.Column="1" Orientation="Vertical">
+                                <Label Text="Education Category" TextColor="Black"/>
+                                <Grid RowSpacing="0">
+                                    <Label Text="College/Institution" IsVisible="False" TextColor="Black"/>
+                                    <Label Text="+ Add Details" IsVisible="True" BackgroundColor="Transparent" TextColor="Red">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Grid>
+                                <Grid RowSpacing="0">
+                                    <Label Text="Occupation" IsVisible="False" TextColor="Black"/>
+                                    <Label Text="+ Add Details" IsVisible="True" BackgroundColor="Transparent" TextColor="Red">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Grid>
+                                <Grid RowSpacing="0">
+                                    <Label Text="Employed In" IsVisible="False" TextColor="Black"/>
+                                    <Label Text="+ Add Details" IsVisible="True" BackgroundColor="Transparent" TextColor="Red">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Grid>
+                            </StackLayout>
+                        </Grid>
+                        
+                        <BoxView BackgroundColor="LightGray" HeightRequest="1" Margin="0,10"/>
+
+                        <!--Location-->
+                        <Grid Padding="10,0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="50"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Source="Locationnew.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            <Label Grid.Column="1" Text="Location" FontAttributes="Bold" Padding="20,0" TextColor="Black"/>
+                            <Image Grid.Column="2" Source="edit.png" HeightRequest="15" WidthRequest="15" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Location_Tapped"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Grid>
+                        <Grid Padding="10,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Padding="10,10" Orientation="Vertical">
+                                <Label Text="Country" TextColor="Black"/>
+                                <Label Text="State" TextColor="Black"/>
+                                <Label Text="City" TextColor="Black"/>
+                                <Label Text="Citizenship" TextColor="Black"/>
+                            </StackLayout>
+                            <StackLayout Padding="10,10" Grid.Column="1" Orientation="Vertical">
+                                <Label Text="Country" TextColor="Black"/>
+                                <Label Text="State" TextColor="Black"/>
+                                <Label Text="City" TextColor="Black"/>
+                                <Label Text="Citizenship" TextColor="Black"/>
+                            </StackLayout>
+                        </Grid>
+                        
+                        <BoxView BackgroundColor="LightGray" HeightRequest="1" Margin="0,10"/>
+
+                        <!--Family -->
+                        <Grid Padding="10,0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="50"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Source="Family.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            <Label Grid.Column="1" Text="Family Details" FontAttributes="Bold" Padding="20,0" TextColor="Black"/>
+                            <Image Grid.Column="2" Source="edit.png" HeightRequest="15" WidthRequest="15" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="FamilyDetails_Tapped"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Grid>
+
+                        <!--Family Details-->
+                        <Grid Padding="10,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Padding="10,10" Orientation="Vertical">
+                                <Label Text="Family Values" TextColor="Black"/>
+                                <Label Text="Family Type" TextColor="Black"/>
+                                <Label Text="Family Status" TextColor="Black"/>
+                                <Label Text="Father's Occupation" TextColor="Black"/>
+                                <Label Text="Mother's Occupation" TextColor="Black"/>
+                                <Label Text="Brother(s)" TextColor="Black"/>
+                                <Label Text="Brother(s) Married" TextColor="Black"/>
+                                <Label Text="Sister(s)" TextColor="Black"/>
+                                <Label Text="Sister(s) Married" TextColor="Black"/>
+                                <Label Text="Ancestral Origin" TextColor="Black"/>
+                            </StackLayout>
+                            <StackLayout Padding="10,10" Grid.Column="1" Orientation="Vertical">
+                                <Grid RowSpacing="0">
+                                    <Label x:Name="FamilyValuesLabel" Text="+ Add Details" IsVisible="True" BackgroundColor="Transparent" TextColor="Red">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="FamilyValues_Tapped" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Grid>
+                                <Grid RowSpacing="0">
+                                    <Label x:Name="FamilyTypeLabel" Text="+ Add Details" IsVisible="True" BackgroundColor="Transparent" TextColor="Red">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="FamilyType_Tapped" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Grid>
+                                <Grid RowSpacing="0">
+                                    <Label x:Name="FamilyStatusLabel" Text="+ Add Details" IsVisible="True" BackgroundColor="Transparent" TextColor="Red">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="FamilyStatus_Tapped" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Grid>
+                                <Grid RowSpacing="0">
+                                    <Label x:Name="FathersOccupationLabel" Text="+ Add Details" IsVisible="True" BackgroundColor="Transparent" TextColor="Red">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="FathersOccupation_Tapped" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Grid>
+                                <Grid RowSpacing="0">
+                                    <Label x:Name="MothersOccupationLabel" Text="+ Add Details" IsVisible="True" BackgroundColor="Transparent" TextColor="Red">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="MothersOccupation_Tapped" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Grid>
+                                <Grid RowSpacing="0">
+                                    <Label x:Name="BrothersLabel" Text="+ Add Details" IsVisible="True" BackgroundColor="Transparent" TextColor="Red">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="Brothers_Tapped" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Grid>
+                                <Grid RowSpacing="0">
+                                    <Label x:Name="BrothersMarriedLabel"  Text="+ Add Details" IsVisible="True" BackgroundColor="Transparent" TextColor="Red">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="BrothersMarried_Tapped" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Grid>
+                                <Grid RowSpacing="0">
+                                    <Label x:Name="SistersLabel" Text="+ Add Details" IsVisible="True" BackgroundColor="Transparent" TextColor="Red">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="Sisters_Tapped"/>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Grid>
+                               
+                                <Grid RowSpacing="0">
+                                    <Label x:Name="SistersMarriedLabel"  Text="+ Add Details" IsVisible="True" BackgroundColor="Transparent" TextColor="Red">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="SistersMarried_Tapped" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Grid>
+
+                                <Grid RowSpacing="0">
+                                    <Label Text="Ancestor" IsVisible="False" TextColor="Black"/>
+                                    <Label x:Name="AncestorLabel" Text="+ Add Details" IsVisible="True" BackgroundColor="Transparent" TextColor="Red">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="Ancestor_Tapped" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Grid>
+                            </StackLayout>
+                        </Grid>
+
+                        <BoxView BackgroundColor="LightGray" HeightRequest="1" Margin="0,10"/>
+
+                        <!--About our family-->
+                        <Grid Padding="10,10" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="50"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Source="Aboutourfamily.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            <Label Grid.Column="1" Text="About our family" FontAttributes="Bold" Padding="20,0" TextColor="Black"/>
+                            <Image Grid.Column="2" Source="edit.png" HeightRequest="15" WidthRequest="15" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Aboutourfamily_Tapped"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Grid>
+                       
+                        <Grid RowSpacing="0" Padding="10,10">
+                            <Label x:Name="AboutourfamilyLabel"  Padding="10,0" Text="+ Add Details" IsVisible="True" BackgroundColor="Transparent" TextColor="Red">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Aboutourfamily_Tapped" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </Grid>
+
+                        <BoxView BackgroundColor="LightGray" HeightRequest="1" Margin="0,10"/>
+
+
+                        <!--Hobbies and Interest-->
+                        <Grid Padding="10,10" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="50"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Source="Hobbies.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            <Label Grid.Column="1" Text="Hobbies and Interest" FontAttributes="Bold" Padding="20,0" TextColor="Black"/>
+                            <Image Grid.Column="2" Source="edit.png" HeightRequest="15" WidthRequest="15" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="HobbiesandInterest_Tapped"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Grid>
+                      
+                        <Grid RowSpacing="0" Padding="10,10">
+                            <Label x:Name="HobbiesandInterestLabel" Padding="10,0" Text="+ Add Details" IsVisible="True" BackgroundColor="Transparent" TextColor="Red">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="HobbiesandInterest_Tapped" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </Grid>
+
+                        <BoxView BackgroundColor="LightGray" HeightRequest="1" Margin="0,10,0,5"/>
+
+                        <!--Add opinion--><!--
+                        <StackLayout Padding="10,0" Orientation="Horizontal" >
+                            <Label TextColor="Black" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="Your views on an equal relation relationship" />
+                            <Button BackgroundColor="Orange" HorizontalOptions="EndAndExpand" FontSize="12" HeightRequest="35" Text="Add Opinion" TextColor="White" CornerRadius="30"/>
+                        </StackLayout>
+
+                        <BoxView BackgroundColor="LightGray" HeightRequest="1" Margin="0,5,0,20" />-->
+
+                        <!--Partner Reference-->
+                        <StackLayout  Orientation="Vertical">
+                            <StackLayout Padding="10,0"  Orientation="Horizontal" >
+                                <Label TextColor="LimeGreen" FontAttributes="Bold" FontSize="Medium" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="PARTNER PREFERENCES" />
+                                <Button BackgroundColor="Transparent"  FontSize="12" HeightRequest="35" Clicked="PartnerRefrence_Tapped" Text="FILTER ITEMS" BorderWidth="1" TextColor="Blue" BorderColor="Blue"/>
+                            </StackLayout>
+                            <Label Padding="10,0,0,0" VerticalOptions="EndAndExpand">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="You can use" Font="10" TextColor="Gray" />
+                                        <Span Text=" Strict Filters" Font="12" FontAttributes="Bold" TextColor="Green"/>
+                                        <Span Text=" to control the types of matches you receive. Feilds tagged with" Font="10" TextColor="Gray" />
+                                        <Span Text="." TextColor="Green" FontAttributes="Bold" LineHeight="1" FontSize="40"/>
+                                        <Span Text=" are currently being considered as strict." Font="10" TextColor="Gray" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+
+                        <BoxView BackgroundColor="LightGray" HeightRequest="1" Margin="0,5,0,20" />
+
+                        <!--Basic Preferences-->
+                        <Grid Padding="10,0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="50"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Source="BasicDetails.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            <Label Grid.Column="1" Text="Basic Preferences" FontAttributes="Bold" Padding="20,0" TextColor="Black"/>
+                            <Image Grid.Column="2" Source="edit.png" HeightRequest="15" WidthRequest="15" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="BasicPreferences_Tapped"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Grid>
+     
+                        <Grid Padding="20,10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image x:Name="AgeAvailable" IsVisible="{Binding AgeAvailable,Mode=TwoWay}" Grid.Row="0" Grid.Column="0" Source="GreenDot.png"  HeightRequest="10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            <Image x:Name="HeightAvailable" IsVisible="{Binding HeightAvailable}" Grid.Row="1" Grid.Column="0" Source="GreenDot.png"  HeightRequest="10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            <Image x:Name="MaritalAvailable" IsVisible="{Binding MaritalAvailable}" Grid.Row="2" Grid.Column="0" Source="GreenDot.png"  HeightRequest="10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            <Image x:Name="PhysicalAvailable" IsVisible="{Binding PhysicalAvailable}" Grid.Row="3" Grid.Column="0" Source="GreenDot.png" HeightRequest="10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            <Image x:Name="EatingAvailable" IsVisible="{Binding EatingAvailable}" Grid.Row="4" Grid.Column="0" Source="GreenDot.png" HeightRequest="10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            <Image x:Name="DrinkAvailable" IsVisible="{Binding DrinkAvailable}" Grid.Row="5" Grid.Column="0" Source="GreenDot.png"  HeightRequest="10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            <Image x:Name="SmokeAvailable" IsVisible="{Binding SmokeAvailable}" Grid.Row="6" Grid.Column="0" Source="GreenDot.png"  HeightRequest="10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+
+
+                            <Label Grid.Row="0" Grid.Column="1" Text="Age" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+                            <Label Grid.Row="1" Grid.Column="1" Text="Height" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+                            <Label Grid.Row="2" Grid.Column="1" Text="Marital Status" TextColor="Black"/>
+                            <Label Grid.Row="3" Grid.Column="1" Text="Physical Status" TextColor="Black"/>
+                            <Label Grid.Row="4" Grid.Column="1" Text="Eating Habits" TextColor="Black"/>
+                            <Label Grid.Row="5" Grid.Column="1" Text="Drinking Habits" TextColor="Black"/>
+                            <Label Grid.Row="6" Grid.Column="1" Text="Smoking Habits" TextColor="Black"/>
+
+
+                            <Label Grid.Row="0" Grid.Column="2" Text="Age" TextColor="Black"/>
+                            <Label Grid.Row="1" Grid.Column="2" Text="Height" TextColor="Black"/>
+                            <Label Grid.Row="2" Grid.Column="2" Text="Marital Status" TextColor="Black"/>
+                            <Label Grid.Row="3" Grid.Column="2" Text="Physical Status" TextColor="Black"/>
+                            <Label Grid.Row="4" Grid.Column="2" Text="Eating Habits" TextColor="Black"/>
+                            <Label Grid.Row="5" Grid.Column="2" Text="Drinking Habits" TextColor="Black"/>
+                            <Label Grid.Row="6" Grid.Column="2" Text="Smoking Habits" TextColor="Black"/>
+
+                        </Grid>
+
+                        <BoxView BackgroundColor="LightGray" HeightRequest="1" Margin="0,5,0,20" />
+
+                        <!--Religious Preferences-->
+                        <Grid Padding="10,10" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="50"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Source="Religious.png" HeightRequest="20" WidthRequest="30" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            <Label Grid.Column="1" Text="Religious Preferences" FontAttributes="Bold" Padding="20,0" TextColor="Black"/>
+                            <Image Grid.Column="2" Source="edit.png" HeightRequest="15" WidthRequest="15" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="ReligiousPreferences_Tapped"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Grid>
+     
+                        <Grid Padding="20,10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image x:Name="MotherTongueAvailable" IsVisible="{Binding MotherTongueAvailable}" Grid.Row="0" Grid.Column="0" Source="GreenDot.png"  HeightRequest="10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            <Image x:Name="ReligiousAvailable" IsVisible="{Binding ReligiousAvailable}" Grid.Row="1" Grid.Column="0" Source="GreenDot.png"  HeightRequest="10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            <Image x:Name="CastAvailable" IsVisible="{Binding CastAvailable}" Grid.Row="2" Grid.Column="0" Source="GreenDot.png"  HeightRequest="10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            <Image x:Name="SubCasteAvailable" IsVisible="{Binding SubCasteAvailable}" Grid.Row="3" Grid.Column="0" Source="GreenDot.png"  HeightRequest="10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            <Image x:Name="StarAvailable" IsVisible="{Binding StarAvailable}" Grid.Row="4" Grid.Column="0" Source="GreenDot.png"  HeightRequest="10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            <Image x:Name="DhosamAvailable" IsVisible="{Binding DhosamAvailable}" Grid.Row="5" Grid.Column="0" Source="GreenDot.png"  HeightRequest="10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+
+                            <Label Grid.Row="0" Grid.Column="1" Text="Mother Tongue" TextColor="Black"/>
+                            <Label Grid.Row="1" Grid.Column="1" Text="Religion" TextColor="Black"/>
+                            <Label Grid.Row="2" Grid.Column="1" Text="Caste" TextColor="Black"/>
+                            <Label Grid.Row="3" Grid.Column="1" Text="Sub Caste" TextColor="Black"/>
+                            <Label Grid.Row="4" Grid.Column="1" Text="Star" TextColor="Black"/>
+                            <Label Grid.Row="5" Grid.Column="1" Text="Dhosam" TextColor="Black"/>
+
+
+                            <Label Grid.Row="0" Grid.Column="2" Text="Mother Tongue" TextColor="Black"/>
+                            <Label Grid.Row="1" Grid.Column="2" Text="Religion" TextColor="Black"/>
+                            <Label Grid.Row="2" Grid.Column="2" Text="Caste" TextColor="Black"/>
+                            <Label Grid.Row="3" Grid.Column="2" Text="Sub Caste" TextColor="Black"/>
+                            <Label Grid.Row="4" Grid.Column="2" Text="Star" TextColor="Black"/>
+                            <Label Grid.Row="5" Grid.Column="2" Text="Dhosam" TextColor="Black"/>
+                          
+                        </Grid>
+
+                        <BoxView BackgroundColor="LightGray" HeightRequest="1" Margin="0,5,0,20" />
+
+                        <!--Professional Preferences-->
+                        <Grid Padding="10,10" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="50"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Source="Professional.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            <Label Grid.Column="1" Text="Professional Preferences" FontAttributes="Bold" Padding="20,0" TextColor="Black"/>
+                            <Image Grid.Column="2" Source="edit.png" HeightRequest="15" WidthRequest="15" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="ProfessionalPreferences_Tapped"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Grid>
+                       
+                        <Grid Padding="20,10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image x:Name="EducationAvailable" IsVisible="{Binding EducationAvailable}" Grid.Row="0" Grid.Column="0" Source="GreenDot.png" HeightRequest="10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            <Image x:Name="EmployedAvailable" IsVisible="{Binding EmployedAvailable}" Grid.Row="1" Grid.Column="0" Source="GreenDot.png"  HeightRequest="10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            <Image x:Name="OccupationAvailable" IsVisible="{Binding OccupationAvailable}" Grid.Row="2" Grid.Column="0" Source="GreenDot.png"  HeightRequest="10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            <Image x:Name="AnnualIncomeAvailable" IsVisible="{Binding AnnualIncomeAvailable}" Grid.Row="3" Grid.Column="0"  Source="GreenDot.png"  HeightRequest="10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+
+
+                            <Label Grid.Row="0" Grid.Column="1" Text="Education" TextColor="Black"/>
+                            <Label Grid.Row="1" Grid.Column="1" Text="Employed In" TextColor="Black"/>
+                            <Label Grid.Row="2" Grid.Column="1" Text="Occupation" TextColor="Black"/>
+                            <Label Grid.Row="3" Grid.Column="1" Text="Annual Income" TextColor="Black"/>
+
+                            <Label Grid.Row="0" Grid.Column="2" Text="Education" TextColor="Black"/>
+                            <Label Grid.Row="1" Grid.Column="2" Text="Employed In" TextColor="Black"/>
+                            <Label Grid.Row="2" Grid.Column="2" Text="Occupation" TextColor="Black"/>
+                            <Label Grid.Row="3" Grid.Column="2"  Text="Annual Income" TextColor="Black"/>
+                        
+                        </Grid>
+
+                        <BoxView BackgroundColor="LightGray" HeightRequest="1" Margin="0,5,0,20" />
+
+                        <!--Location Preferences-->
+                        <Grid Padding="10,10" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="50"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Source="Locationnew.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            <Label Grid.Column="1" Text="Location Preferences" FontAttributes="Bold" Padding="20,0" TextColor="Black"/>
+                            <Image Grid.Column="2" Source="edit.png" HeightRequest="15" WidthRequest="15" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="LocationPreferences_Tapped"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Grid>
+        
+
+                        <Grid Padding="20,10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image x:Name="CountryAvailable" IsVisible="{Binding CountryAvailable}" Grid.Row="0" Grid.Column="0" Source="GreenDot.png"  HeightRequest="10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            <Image x:Name="ResidingStateAvialble" IsVisible="{Binding ResidingStateAvialble}" Grid.Row="1" Grid.Column="0" Source="GreenDot.png"  HeightRequest="10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+
+                            <Label Text="Country" Grid.Row="0" Grid.Column="1" TextColor="Black"/>
+                            <Label Text="Residing State" Grid.Row="1" Grid.Column="1" TextColor="Black"/>
+
+                            <Label Text="Country" Grid.Row="0" Grid.Column="2" TextColor="Black"/>
+                            <Label Text="Residing State" Grid.Row="1" Grid.Column="2" TextColor="Black"/>
+                        </Grid>
+
+                        <BoxView BackgroundColor="LightGray" HeightRequest="1" Margin="0,5,0,20" />
+
+                        <Grid Padding="10,10" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="50"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Source="Whatlooking.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            <Label Grid.Column="1" Text="What we are looking for" FontAttributes="Bold" Padding="20,0" TextColor="Black"/>
+                            <Image Grid.Column="2" Source="edit.png" HeightRequest="15" WidthRequest="15" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Whatlooking_Tapped"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Grid>
+
+                        <Label x:Name="WhatlookingLabel" Text="Not  Specified" Padding="20,0" TextColor="Black" Margin="10"/>
+                    </StackLayout>
+                </Grid>
+
+            </Grid>
+        </ScrollView>
+    </Grid>
+</ContentPage>

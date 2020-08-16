@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:Custom="clr-namespace:Matrimony.Customization"
+             mc:Ignorable="d"
+             x:Class="Matrimony.Views.Registration.BasicDetail" 
+             BackgroundColor="White">
+    
+    <NavigationPage.TitleView>
+        <Label Text="Profile Information" FontFamily="Calibri" FontSize="Medium"/>
+    </NavigationPage.TitleView>
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style TargetType="Label">
+                <Setter Property="Margin" Value="15,0,0,0"/>
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="TextColor" Value="Gray"/>
+            </Style>
+
+            <Style TargetType="Frame">
+                <Setter Property="HeightRequest" Value="35"/>
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid>
+            <ScrollView>
+                <Grid BackgroundColor="Transparent" RowSpacing="20" Padding="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Text="BASIC DETAILS" Padding="10,20,20,20"  Grid.Row="0" 
+                           FontSize="20" HorizontalOptions="StartAndExpand" 
+                           VerticalOptions="StartAndExpand" TextColor="Gray"/>
+
+                    <Grid Grid.Row="1">
+                        <StackLayout Spacing="0">
+                            <Label x:Name="lblName" Text="Name"/>
+                            <Frame x:Name="frameName">
+                                <Custom:CustomEntry x:Name="entryName" Text="{Binding UserName}" Placeholder="Your name"/>
+                            </Frame>
+                        </StackLayout>
+                    </Grid>
+
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout Spacing="0" Grid.Column="0">
+                            <Label x:Name="lblDOB" Text="Date of birth"/>
+                            <Frame x:Name="frameDOB">
+                                <Custom:CustomDatePicker Margin="15,0,0,0" FontSize="Small" x:Name="datePickDOB" Date="5/25/1990"/>
+                            </Frame>
+                        </StackLayout>
+
+                        <StackLayout Spacing="0" Grid.Column="1">
+                            <Label Text="Height"/>
+                            <Frame x:Name="frameHeight">
+                                <Custom:CustomPicker Margin="15,0,0,0" FontSize="Small" x:Name="pickHeight">
+                                    <Picker.Items>
+                                        <x:String>4ft 6In</x:String>
+                                        <x:String>4ft 7In</x:String>
+                                        <x:String>4ft 8In</x:String>
+                                        <x:String>4ft 9In</x:String>
+                                        <x:String>4ft 10In</x:String>
+                                        <x:String>4ft 11In</x:String>
+                                        <x:String>5ft</x:String>
+                                        <x:String>5ft 1In</x:String>
+                                        <x:String>5ft 2In</x:String>
+                                        <x:String>5ft 3In</x:String>
+                                        <x:String>5ft 4In</x:String>
+                                        <x:String>5ft 5In</x:String>
+                                        <x:String>5ft 6In</x:String>
+                                        <x:String>6ft</x:String>
+                                        <x:String>6ft 1In</x:String>
+                                        <x:String>6ft 2In</x:String>
+                                        <x:String>6ft 3In</x:String>
+                                        <x:String>6ft 4In</x:String>
+                                        <x:String>6ft 5In</x:String>
+                                        <x:String>6ft 6In</x:String>
+                                    </Picker.Items>
+                                </Custom:CustomPicker>
+                            </Frame>
+                        </StackLayout>
+
+                    </Grid>
+
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout Spacing="0" Grid.Column="0">
+                            <Label Text="Martial Status"/>
+                            <Frame x:Name="MartialStatus">
+                                <Custom:CustomPicker x:Name="pickMartialStatus" Margin="15,0,0,0" FontSize="Small">
+                                    <Picker.Items>
+                                        <x:String>Never Married</x:String>
+                                        <x:String>Divorced</x:String>
+                                        <x:String>Widower</x:String>
+                                        <x:String>Awaiting Divorce</x:String>
+                                    </Picker.Items>
+                                </Custom:CustomPicker>
+                            </Frame>
+                        </StackLayout>
+
+                        <StackLayout Spacing="0" Grid.Column="1">
+                            <Label Text="Weight"/>
+                            <Frame x:Name="frameWeight">
+                                <Custom:CustomPicker x:Name="pickWeight" Margin="15,0,0,0" FontSize="Small">
+                                    <Picker.Items>
+                                        <x:String>40 kgs</x:String>
+                                        <x:String>41 kgs</x:String>
+                                        <x:String>42 kgs</x:String>
+                                        <x:String>43 kgs</x:String>
+                                        <x:String>44 kgs</x:String>
+                                        <x:String>45 kgs</x:String>
+                                        <x:String>46 kgs</x:String>
+                                        <x:String>47 kgs</x:String>
+                                        <x:String>48 kgs</x:String>
+                                        <x:String>49 kgs</x:String>
+                                        <x:String>50 kgs</x:String>
+                                        <x:String>51 kgs</x:String>
+                                        <x:String>52 kgs</x:String>
+                                        <x:String>53 kgs</x:String>
+                                        <x:String>54 kgs</x:String>
+                                        <x:String>55 kgs</x:String>
+                                        <x:String>56 kgs</x:String>
+                                        <x:String>57 kgs</x:String>
+                                        <x:String>58 kgs</x:String>
+                                        <x:String>59 kgs</x:String>
+                                        <x:String>60 kgs</x:String>
+                                        <x:String>61 kgs</x:String>
+                                        <x:String>62 kgs</x:String>
+                                        <x:String>63 kgs</x:String>
+                                        <x:String>64 kgs</x:String>
+                                        <x:String>65 kgs</x:String>
+                                        <x:String>66 kgs</x:String>
+                                        <x:String>67 kgs</x:String>
+                                        <x:String>68 kgs</x:String>
+                                        <x:String>69 kgs</x:String>
+                                        <x:String>70 kgs</x:String>
+                                        <x:String>71 kgs</x:String>
+                                        <x:String>72 kgs</x:String>
+                                        <x:String>73 kgs</x:String>
+                                        <x:String>74 kgs</x:String>
+                                        <x:String>75 kgs</x:String>
+                                    </Picker.Items>
+                                </Custom:CustomPicker>
+                            </Frame>
+                        </StackLayout>
+
+                    </Grid>
+
+                    <Grid Grid.Row="4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout Spacing="0" Grid.Column="0">
+                            <Label Text="Body Type"/>
+                            <Frame x:Name="frameBodyType">
+                                <Custom:CustomPicker x:Name="pickBodyType" Margin="15,0,0,0" FontSize="Small">
+                                    <Picker.Items>
+                                        <x:String>Average</x:String>
+                                        <x:String>Athletic</x:String>
+                                        <x:String>Slim</x:String>
+                                        <x:String>Heavy</x:String>
+                                    </Picker.Items>
+                                </Custom:CustomPicker>
+                            </Frame>
+                        </StackLayout>
+
+                        <StackLayout Spacing="0" Grid.Column="1">
+                            <Label Text="Complexion"/>
+                            <Frame x:Name="fameComplexion">
+                                <Custom:CustomPicker x:Name="pickComplexion" Margin="15,0,0,0" FontSize="Small">
+                                    <Picker.Items>
+                                        <x:String>Very Fair</x:String>
+                                        <x:String>Fair</x:String>
+                                        <x:String>Wheatish</x:String>
+                                        <x:String>Wheatish Brown</x:String>
+                                        <x:String>Dark</x:String>
+                                    </Picker.Items>
+                                </Custom:CustomPicker>
+
+                            </Frame>
+                        </StackLayout>
+
+                    </Grid>
+
+                    <Grid Grid.Row="5">
+
+                        <StackLayout Spacing="0">
+                            <Label Text="Physical Status"/>
+                            <Frame x:Name="framePhysicalStatus">
+                                <Custom:CustomPicker x:Name="pickPhysicalStatus" Margin="15,0,0,0" FontSize="Small">
+                                    <Picker.Items>
+                                        <x:String>Normal</x:String>
+                                        <x:String>Physically Challenged</x:String>
+                                    </Picker.Items>
+                                </Custom:CustomPicker>
+
+                            </Frame>
+                        </StackLayout>
+
+                    </Grid>
+
+                    <Grid Grid.Row="6" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout Spacing="0" Grid.Column="0">
+                            <Label Text="Mother Tongue"/>
+                            <Frame x:Name="frameMotherTongue">
+                                <Custom:CustomPicker x:Name="pickMotherTongue" Margin="15,0,0,0" FontSize="Small">
+                                    <Picker.Items>
+                                        <x:String>Malayalam</x:String>
+                                        <x:String>Tamil</x:String>
+                                        <x:String>Kannada</x:String>
+                                        <x:String>Hindhi</x:String>
+                                        <x:String>Bengali</x:String>
+                                        <x:String>Gujarathi</x:String>
+                                        <x:String>Oriya</x:String>
+                                        <x:String>Punjabi</x:String>
+                                        <x:String>Sindhi</x:String>
+                                    </Picker.Items>
+                                </Custom:CustomPicker>
+                            </Frame>
+                        </StackLayout>
+
+                        <StackLayout Spacing="0" Grid.Column="1">
+                            <Label Text="Eating Habits"/>
+                            <Frame x:Name="frameEatingHabit">
+                                <Custom:CustomPicker x:Name="pickEatingHabit" Margin="15,0,0,0" FontSize="Small">
+                                    <Picker.Items>
+                                        <x:String>Vegetarian</x:String>
+                                        <x:String>Non-Vegetarian</x:String>
+                                        <x:String>Eggetarian</x:String>
+                                    </Picker.Items>
+                                </Custom:CustomPicker>
+                            </Frame>
+                        </StackLayout>
+
+                    </Grid>
+
+                    <Grid Grid.Row="7" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout Spacing="0" Grid.Column="0">
+                            <Label Text="Drinking Habits"/>
+                            <Frame x:Name="frameDrinkingHabit">
+                                <Custom:CustomPicker x:Name="pickDrinkingHabit" Margin="15,0,0,0" FontSize="Small">
+                                    <Picker.Items>
+                                        <x:String>Yes</x:String>
+                                        <x:String>No</x:String>
+                                        <x:String>Occasionally</x:String>
+                                    </Picker.Items>
+                                </Custom:CustomPicker>
+                            </Frame>
+                        </StackLayout>
+
+                        <StackLayout Spacing="0" Grid.Column="1">
+                            <Label Text="Smoking Habits"/>
+                            <Frame x:Name="frameSmokingHabit">
+                                <Custom:CustomPicker x:Name="pickSmokingHabit"  Margin="15,0,0,0" FontSize="Small">
+                                    <Picker.Items>
+                                        <x:String>Yes</x:String>
+                                        <x:String>No</x:String>
+                                        <x:String>Occasionally</x:String>
+                                    </Picker.Items>
+                                </Custom:CustomPicker>
+
+                            </Frame>
+                        </StackLayout>
+
+                    </Grid>
+
+                    <Grid Padding="0,10,0,10" Grid.Row="8" x:Name="SaveBasicDetails">
+                        <Button x:Name="btnSaveBasicDetails" HorizontalOptions="Center" VerticalOptions="Center" 
+                                WidthRequest="200" HeightRequest="40" CornerRadius="25" Text="Save"
+                                BackgroundColor="Orange" TextColor="White" FontSize="Small"
+                                Clicked="BtnSaveBasicDetails_Clicked"/>
+                    </Grid>
+
+                </Grid>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+
+</ContentPage>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Matrimony.Views.FPAuthentication">
+    <ContentPage.Content>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid x:Name="topContent" Grid.Row="0">
+                <Label Text="'Matrimony' is encrypted" TextColor="Black" HorizontalOptions="CenterAndExpand"  VerticalOptions="End" FontSize="Medium"/>
+            </Grid>
+
+            <Grid x:Name="middleContent" Grid.Row="1">
+                <Image Source="FPrint_Blue.png" WidthRequest="90" HeightRequest="110" 
+               Grid.RowSpan="3" HorizontalOptions="Center" VerticalOptions="End"></Image>
+                <Label Grid.RowSpan="4" Text="Please verify your fingerprint" TextColor="Black" HorizontalOptions="CenterAndExpand"  VerticalOptions="End"/>
+            </Grid>
+
+            <Grid x:Name="bottomContent" Grid.Row="2">
+                <ActivityIndicator x:Name="ActInd" Margin="0,5,0,0" IsRunning="True" HeightRequest="25" Color="LightGreen" HorizontalOptions="Center" VerticalOptions="Start"/>
+                <Label Text="Use pin authentication" TextColor="#3399ff" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+            </Grid>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

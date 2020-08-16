@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:Matrimony.Customization"
+             mc:Ignorable="d"
+             x:Class="Matrimony.Views.Registration.EditContact"
+             BackgroundColor="White">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>    
+            
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+
+        <Grid>
+
+            <StackLayout Padding="30">
+                
+                <StackLayout Orientation="Horizontal" x:Name="stackEmail">
+                    <Label Text="Email" FontAttributes="Bold" HorizontalOptions="StartAndExpand"/>
+                    <Image x:Name="imageEmail" Source="EditBlack.png" HeightRequest="20" WidthRequest="20" 
+                           HorizontalOptions="EndAndExpand"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Email_Tapped"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+
+                <Label Text="current E-mail address"/>
+                <Label Text="{Binding Source={x:Reference EmailEntry},Path=Text}" />
+                <BoxView BackgroundColor="LightGray" Margin="0,20" HeightRequest="1"/>
+
+                <StackLayout Orientation="Horizontal" x:Name="stackPhoneNumber">
+                    <Label Text="PhoneNumber" FontAttributes="Bold" HorizontalOptions="StartAndExpand"/>
+                    <Image x:Name="imagePhoneNumber" Source="EditBlack.png" HeightRequest="20" WidthRequest="20" 
+                           HorizontalOptions="EndAndExpand"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Phone_Tapped"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+                
+                <Label Text="Primary Contact Details"/>
+                <Label Text="{Binding Source={x:Reference PhonenumberEntry},Path=Text}"/>
+                <BoxView BackgroundColor="LightGray" Margin="0,20" HeightRequest="1"/>
+
+                <StackLayout Orientation="Horizontal" x:Name="stackAlternatePhoneNumber">
+                    <Label Text="Alternate Phone number" FontAttributes="Bold" />
+                    <Image x:Name="imageAlternatePhoneNumber" Source="EditBlack.png" HeightRequest="20" WidthRequest="20" HorizontalOptions="EndAndExpand"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="AlternatePhone_Tapped"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+                
+                <Label  Text="{Binding Source={x:Reference AlternatePhonenumberEntry},Path=Text}"/>
+                <BoxView BackgroundColor="LightGray" Margin="0,20" HeightRequest="1"/>
+            </StackLayout>
+
+            <ContentView x:Name="EmailView" BackgroundColor="#C0808080" Padding="30,150,30,200" IsVisible="false">
+                <Grid BackgroundColor="White" Padding="50">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Text="Enter your Email ID" Grid.Row="0" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" />
+                    <Frame Grid.Row="1" Padding="0" >
+                        <local:CustomEntry x:Name="EmailEntry" Placeholder="eg: rakesh@gmail.com" Text="abcdgmail.com" />
+                    </Frame>
+                    <StackLayout Grid.Row="2" Padding="10" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                        <Button x:Name="btnEmailViewOK" Text="OK" Clicked="EmailViewOK_Tapped" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Button x:Name="btnEmailViewCancel" Text="CANCEL" Clicked="EmailViewCancel_Tapped" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </StackLayout>
+                </Grid>
+            </ContentView>
+
+            <ContentView x:Name="PhonenumberView" BackgroundColor="#C0808080" Padding="30,150,30,200" IsVisible="false">
+                <Grid BackgroundColor="White" Padding="50">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Text="Enter New Phone number" Grid.Row="0" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" />
+                    <Frame Grid.Row="1" Padding="0" >
+                        <local:CustomEntry x:Name="PhonenumberEntry" Text="01234567890" />
+                    </Frame>
+                    <StackLayout Grid.Row="2" Padding="10" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                        <Button x:Name="btnPhonenumberViewOK" Text="OK" Clicked="PhonenumberViewOK_Tapped" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Button x:Name="btnPhonenumberViewCancel" Text="Cancel" Clicked="PhonenumberViewCancel_Tapped" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </StackLayout>
+                </Grid>
+            </ContentView>
+
+            <ContentView x:Name="AlternatePhonenumberView" BackgroundColor="#C0808080" Padding="30,150,30,200" IsVisible="false">
+                <Grid BackgroundColor="White" Padding="50">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Text="Alternate Phone number" Grid.Row="0" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" />
+                    <Frame Grid.Row="1" Padding="0" >
+                        <local:CustomEntry x:Name="AlternatePhonenumberEntry" />
+                    </Frame>
+                    <StackLayout Grid.Row="2" Padding="10" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                        <Button x:Name="btnAlternatePhonenumberViewOK" Text="OK" Clicked="AlternatePhonenumberViewOK_Tapped" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Button x:Name="btnAlternatePhonenumberViewCancel" Text="CANCEL" Clicked="AlternatePhonenumberViewCancel_Tapped" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </StackLayout>
+                </Grid>
+            </ContentView>
+
+        </Grid>
+        
+    </ContentPage.Content>
+</ContentPage>

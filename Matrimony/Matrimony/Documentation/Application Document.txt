@@ -1,0 +1,55 @@
+﻿Application Details
+===================
+
+===========================================================================================================
+Application Theme Color #69B7FF
+===========================================================================================================
+
+
+===========================================================================================================
+@ Advertisement Ideas
+---------------------
+ 
+ 1. [1000 roopayum eapplication num undenkil lokathu evideninnum pennu kittum]
+
+===========================================================================================================
+
+
+===========================================================================================================
+@ Plugin Updates
+----------------
+[When you are going to update plugins, you must have to read the details]
+
+1. Xamarin.Forms(4.7.0.1080) is suitable for Xam.Plugins.Forms.ImageCircle(3.0.0.5) and also we have to use 
+   Plugin.Fingerprint(1.4.8). If you are making version update plugin.Fingerprint is not match with 
+   Xam.Plugins.Forms.ImageCircle. So you careful about the plugins updation.
+
+===========================================================================================================
+
+
+===========================================================================================================
+@ Requirement
+-------------
+
+1. FingerprintPage [Default Firstpage]
+
+   If the successful authentication, it should redirect to Profilepage.
+   Dat file details are there, means its should load from dat. Later it should compare the data from server.
+   If there have any missmatch, you have to update the dat file and the page.
+
+2. Not a registered user or login?
+
+   If the user not yet registered with application, it should not show the fingerprint page.
+   You have to show the login page, sometime user may registered. The registration page link should be under 
+   the login page.
+   
+===========================================================================================================
+
+
+===========================================================================================================
+@ New Features to be add
+------------------------
+
+
+===========================================================================================================
+

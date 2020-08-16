@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Matrimony.Views.Registration.ProfessionalInformation">
+
+    <ContentPage.Content>
+        <Grid BackgroundColor="White">
+            <ScrollView BackgroundColor="White">
+                <Grid BackgroundColor="White" Padding="20" RowSpacing="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0" Padding="2">
+                        <Label Text="PROFESSIONAL INFORMATION"  HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" FontSize="20"/>
+                    </Grid>
+
+                    <Frame Padding="2" BorderColor="Transparent" Grid.Row="1">
+                        <StackLayout Spacing="0">
+                            <Label Text="Highest Education"/>
+                            <Picker>
+                                <Picker.Items>
+                                    <x:String>B.E/B.Tech</x:String>
+                                    <x:String>Aeronautical</x:String>
+                                    <x:String>B.Arch</x:String>
+                                    <x:String>BCA</x:String>
+                                    <x:String>BE</x:String>
+                                    <x:String>BSC</x:String>
+                                    <x:String>M.Arch</x:String>
+                                    <x:String>MCA</x:String>
+                                    <x:String>ME</x:String>
+                                    <x:String>M.Tech</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame BorderColor="Transparent" Padding="2" Grid.Row="2">
+                        <StackLayout Spacing="0">
+                            <Label Text="Enter College"/>
+                            <Entry x:Name="ColleageEntry"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame BorderColor="Transparent" Padding="2" Grid.Row="3">
+                        <StackLayout Spacing="0">
+                            <Label Text="Employeed in"/>
+                            <Picker>
+                                <Picker.Items>
+                                    <x:String>Not working</x:String>
+                                    <x:String>Defense</x:String>
+                                    <x:String>Business</x:String>
+                                    <x:String>Private</x:String>
+                                    <x:String>Self-Employeed</x:String>
+                                    <x:String>Government</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame BorderColor="Transparent" Padding="2" Grid.Row="4">
+                        <StackLayout Spacing="0">
+                            <Label Text="Occupation"/>
+                            <Picker>
+                                <Picker.Items>
+                                    <x:String>Student</x:String>
+                                    <x:String>Retired</x:String>
+                                    <x:String>Currenlty Working</x:String>
+                                    <x:String>Not Working</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame BorderColor="Transparent" Padding="2" Grid.Row="5">
+                        <StackLayout Spacing="0">
+                            <Label Text="Enter Oraganization name"/>
+                            <Entry/>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame BorderColor="Transparent" Padding="2" Grid.Row="6">
+                        <StackLayout Spacing="0">
+                            <Label Text="Currency Type"/>
+                            <Picker>
+                                <Picker.Items>
+                                    <x:String>AED-UAE</x:String>
+                                    <x:String>AF-afganisatan</x:String>
+                                    <x:String>USD-American</x:String>
+                                    <x:String>USD-paiau</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame BorderColor="Transparent" Padding="2" Grid.Row="7">
+                        <StackLayout Spacing="0">
+                            <Label Text="Enter Annual Income"/>
+                            <Entry/>
+                        </StackLayout>
+                    </Frame>
+
+                    <Grid Padding="15" Grid.Row="8">
+                        <Button x:Name="ProfessionalSaveButton" Text="SAVE"  WidthRequest="250" BackgroundColor="Orange" CornerRadius="20" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                    </Grid>
+                </Grid>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

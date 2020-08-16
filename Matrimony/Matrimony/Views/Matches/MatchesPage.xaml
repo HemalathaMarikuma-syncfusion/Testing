@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" BackgroundColor="LightGray"
+             x:Class="Matrimony.Views.Matches.MatchesPage">
+    <ContentPage.Content>
+
+        <RelativeLayout x:Name="relativeCompletePage">
+
+            <StackLayout x:Name="stackNavigationBar" 
+                         Orientation="Horizontal" 
+                         BackgroundColor="#44DB78"
+                         RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1}"
+                         RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=.1}">
+                <Image Margin="15,0,0,0" Source="back_32px.png"  HeightRequest="23" WidthRequest="23">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="BackArrow_Tapped"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label VerticalOptions="Center" VerticalTextAlignment="Center"
+                       HorizontalOptions="CenterAndExpand"
+                       Margin="0,10,10,0">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Matches  " TextColor="White" FontSize="Title"/>
+                            <Span x:Name="spanMatchType" Text="All" TextColor="White" FontSize="Micro"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Login_Tapped"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+
+            <StackLayout x:Name="stackMatchTypes" BackgroundColor="WhiteSmoke"
+                         Grid.Row="1" IsVisible="false"
+                         Orientation="Horizontal"
+                         RelativeLayout.WidthConstraint="{ConstraintExpression 
+                                                            Type=RelativeToParent,
+                                                            Property=Width,Factor=1}"
+                         RelativeLayout.YConstraint="{ConstraintExpression 
+                                                        Type=RelativeToView,
+                                                        ElementName=stackNavigationBar,
+                                                        Property=Height,
+                                                        Factor=1}"
+                         RelativeLayout.HeightConstraint="{ConstraintExpression 
+                                                        Type=RelativeToView,
+                                                        ElementName=stackNavigationBar,
+                                                        Property=Height,
+                                                        Factor=1.2}">
+                <Grid HorizontalOptions="FillAndExpand" 
+                      ColumnSpacing="25"
+                      Margin="10,0,10,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35"/>
+                        <ColumnDefinition Width="35"/>
+                        <ColumnDefinition Width="35"/>
+                        <ColumnDefinition Width="35"/>
+                        <ColumnDefinition Width="35"/>
+                        <ColumnDefinition Width="35"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Image Grid.Column="0" 
+                           x:Name="imageAllMatches" 
+                           Source="shortlisted_32px.png"
+                           Margin="5,0,7,0" 
+                           HorizontalOptions="Start"/>
+                    <Image Grid.Column="1" 
+                           x:Name="imageStar" 
+                           Source="skip_32px.png" 
+                           HorizontalOptions="Start"/>
+                    <Image Grid.Column="2" 
+                             x:Name="imagePremium" 
+                             Source="skip_32px.png" 
+                             HorizontalOptions="Start"/>
+                    <Image Grid.Column="3" 
+                           x:Name="imageProffession" 
+                           Source="chat_32px.png" 
+                           HorizontalOptions="End"/>
+                    <Image Grid.Column="4" 
+                           x:Name="imageMutual" 
+                           Source="camera_32px.png" 
+                           HorizontalOptions="End"/>
+                    <Image Grid.Column="5" 
+                           x:Name="imageNearby" 
+                           Source="camera_32px.png" 
+                           HorizontalOptions="End"/>
+                </Grid>
+            </StackLayout>
+
+            <ListView x:Name="ListViewMatches" 
+                      SeparatorColor="LightGray" 
+                      ItemTapped="ListViewMatches_ItemTapped"
+                      VerticalScrollBarVisibility="Never"
+                      ItemDisappearing="ListViewMatches_ItemDisappearing"
+                      HasUnevenRows="True"
+                      RelativeLayout.YConstraint="{ConstraintExpression 
+                                                    Type=RelativeToView,
+                                                    ElementName=stackNavigationBar,
+                                                    Property=Height,Constant=2,
+                                                    Factor=1}"
+                      RelativeLayout.HeightConstraint="{ConstraintExpression
+                                                        Type=RelativeToParent,
+                                                        Property=Height,
+                                                        Factor=1}"
+                      RelativeLayout.WidthConstraint="{ConstraintExpression
+                                                        Type=RelativeToParent,
+                                                        Property=Width,
+                                                        Factor=1}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+
+                            <Frame Margin="5,2,5,2" BorderColor="White" CornerRadius="14" HasShadow="False">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+
+                                    <StackLayout>
+
+                                        <StackLayout BackgroundColor="White" Orientation="Horizontal" 
+                                                     Padding="5,10,5,0" Grid.Row="0">
+                                            <Frame CornerRadius="12" 
+                                                   BackgroundColor="LightGray" 
+                                                   Padding="-1"
+                                                   WidthRequest="110">
+                                                <StackLayout>
+                                                    
+                                                    <Image 
+                                                           Source="{Binding ImageUrl}"  
+                                                           x:Name="{Binding ProfileID}" 
+                                                           Aspect="AspectFill">
+                                                        <Image.GestureRecognizers>
+                                                            <TapGestureRecognizer Tapped="imageUserGesture_Tapped"/>
+                                                        </Image.GestureRecognizers>
+                                                    </Image>
+
+                                                    <Image Source="unUploaded_512px.png" 
+                                                           VerticalOptions="CenterAndExpand"
+                                                           HorizontalOptions="CenterAndExpand"
+                                                           IsVisible="false"
+                                                           Aspect="AspectFill"/>
+                                                    <!--IsVisible="{Binding Source={x:Reference ProfileID}, Path=IsLoading}"
+                                                           />-->
+                                                </StackLayout>
+                                            </Frame>
+
+                                            <StackLayout Orientation="Vertical" 
+                                                 VerticalOptions="StartAndExpand" 
+                                                 HorizontalOptions="StartAndExpand">
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Image x:Name="imageVerified" 
+                                                           HeightRequest="25" WidthRequest="25" 
+                                                           VerticalOptions="EndAndExpand" 
+                                                           Source="Verified_32px.png" IsVisible="{Binding IsVerified}"/>
+                                                    <Image x:Name="imageNotVerified" 
+                                                           HeightRequest="20" WidthRequest="20" 
+                                                           Source="verifiedNot_32px.png" IsVisible="False"/>
+                                                    <!--{Binding Source={x:Reference imageVerified}, Path=IsVisible, Converter={x:StaticResource InverseBooleanConverter}}-->
+                                                    <Label Text="{Binding Name}" Margin="0,18,0,0" 
+                                                            TextColor="Black" FontAttributes="Bold" 
+                                                            FontSize="Medium"/>
+                                                </StackLayout>
+
+                                                <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+                                                    <Label Text="{Binding Age}" TextColor="Black" FontSize="Small"/>
+                                                    <Label Text="{Binding Height}" TextColor="Black" FontSize="Small"/>
+                                                    <Label Text="{Binding Qualification}" TextColor="Black" FontSize="Small"/>
+                                                </StackLayout>
+                                                <StackLayout  Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+                                                    <Label Text="{Binding Caste}" TextColor="Black" FontSize="Small"/>
+                                                    <Label Text="{Binding Star}" TextColor="Black" FontSize="Small"/>
+                                                    <Label Text="{Binding Location}" TextColor="Black" FontSize="Small"/>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+                                                    <Label Text="{Binding District}" TextColor="Black" FontSize="Small"/>
+                                                    <Label Text="{Binding State}" TextColor="Black" FontSize="Small"/>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </StackLayout>
+
+                                        <StackLayout Grid.Row="1" Orientation="Horizontal" Margin="0,6,0,0">
+                                            <Grid HorizontalOptions="FillAndExpand">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="35"/>
+                                                    <ColumnDefinition Width="30"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="135"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="35"/>
+                                                </Grid.RowDefinitions>
+
+                                                <Image Grid.Column="0" x:Name="imageShortList" 
+                                                   Source="shortlisted_32px.png"                                                   
+                                                   Margin="5,0,7,0" HorizontalOptions="Start"/>
+                                                <Image Grid.Column="1" x:Name="imageSkip" 
+                                                   Source="skip_32px.png" Margin="0,0,5,0" 
+                                                   HorizontalOptions="Start"/>
+                                                <!--<BoxView Grid.Column="2"
+                                                     BackgroundColor="Green" 
+                                                     HorizontalOptions="CenterAndExpand" />-->
+                                                <!--<Image Grid.Column="3" x:Name="imageChat" 
+                                                   Source="chat_32px.png" Margin="5,0,7,0" 
+                                                   HorizontalOptions="End"/>
+                                                <Image Grid.Column="4" x:Name="imageVideo" 
+                                                   Source="camera_32px.png" Margin="0,0,5,0" 
+                                                   HorizontalOptions="End"/>-->
+
+                                                <!--<Button Grid.Column="3" x:Name="btnSendInterest" 
+                                                        Text="Interest" Margin="0,3,10,3"
+                                                        HorizontalOptions="EndAndExpand"
+                                                        ImageSource="sentInterest_24px.png" 
+                                                        VerticalOptions="Center" 
+                                                        WidthRequest="160" Padding="3,0,0,0"
+                                                        CornerRadius="12"
+                                                        BackgroundColor="Orange" TextColor="White" 
+                                                        FontSize="Small" 
+                                                        Clicked="btnSendInterest_Clicked"/>-->
+
+                                                <Frame CornerRadius="18" Padding="3,0,0,0"
+                                                       BorderColor="Transparent"
+                                                       Grid.Column="3" x:Name="btnSendInterest"
+                                                       BackgroundColor="Orange" Margin="0,4,10,4">
+                                                    <StackLayout Margin="0" Orientation="Horizontal">
+                                                        <Image Source="email_32px.png"
+                                                               VerticalOptions="Center"
+                                                               Margin="10,2,0,2"/>
+                                                        <Label Text="Interested" FontSize="Small" 
+                                                               Margin="10,0,0,0" 
+                                                               TextColor="White"
+                                                               VerticalOptions="Center"
+                                                               HorizontalOptions="Center"/>
+                                                        <StackLayout.GestureRecognizers>
+                                                            <TapGestureRecognizer x:Name="TapSendInterest" 
+                                                                                  Tapped="TapSendInterest_Tapped"/>
+                                                        </StackLayout.GestureRecognizers>
+                                                    </StackLayout>
+                                                </Frame>
+
+                                            </Grid>
+                                        </StackLayout>
+
+                                    </StackLayout>
+
+                                </Grid>
+                            </Frame>
+
+                            <!--<ViewCell.ContextActions>
+                                <MenuItem x:Name="FavoriteProfile" IconImageSource="star_24px.png" Text="Favorite" Clicked="FavoriteProfile_Clicked" CommandParameter="{Binding .}"/>
+                                <MenuItem x:Name="LikeProfile" IconImageSource="heart_24px.png" Text="Like" Clicked="LikeProfile_Clicked" CommandParameter="{Binding .}"/>
+                                <MenuItem x:Name="BlockProfile" IconImageSource="Block_user_24px.png" Text="Block" Clicked="BlockProfile_Clicked" CommandParameter="{Binding .}"/>
+                            </ViewCell.ContextActions>-->
+
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </RelativeLayout>
+
+
+    </ContentPage.Content>
+</ContentPage>
